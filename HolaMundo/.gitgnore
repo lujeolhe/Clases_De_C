@@ -1,1 +1,2 @@
-
+#Es importante no incluir los achivos ejecutales dentro de git
+*.exe
