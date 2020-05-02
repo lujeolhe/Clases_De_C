@@ -10,28 +10,28 @@ void imprimir_matriz(int matriz[][valor_max],int tam_renglon,int tam_columna);
 int main(){
   int matriz2[3][valor_max],matriztotal[3][valor_max],matriztotal2[3][valor_max],aux=1;
   for(int i=0;i<2;i++){
-    for(int j=0;j<3;j++){
+    for(int j=0;j<4;j++){
       matriz2[i][j]=aux;
       aux++;
     }
   }
 
-  int matriz[3][valor_max];
+  int matriz[4][valor_max];
   aux=1;
-  for(int i=0;i<3;i++){
+  for(int i=0;i<4;i++){
     for(int j=0;j<2;j++){
       matriz[i][j]=aux;
       aux++;
     }
   }
 
-  multiplicacion(matriz2,matriz,matriztotal,2,3,3,2);
+  multiplicacion(matriz2,matriz,matriztotal,2,4,4,2);
 
-  multiplicacion2(matriz2,matriz,matriztotal2,2,3,3,2);
+  multiplicacion2(matriz2,matriz,matriztotal2,2,4,4,2);
 
-  imprimir_matriz(matriz2,2,3);
+  imprimir_matriz(matriz2,2,4);
   printf("\n" );
-  imprimir_matriz(matriz,3,2);
+  imprimir_matriz(matriz,4,2);
   printf("\n" );
   imprimir_matriz(matriztotal,2,2);
   printf("\n" );
