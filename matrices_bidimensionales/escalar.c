@@ -1,10 +1,8 @@
 ///////////////////////////////////////
 #include <stdio.h>
+#include "operaciones_en_matrices.h"
 ///////////////////////////////////////
-#define valor_max 10
-///////////////////////////////////////
-void escalar(int n, int matriz[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna);
-void imprimir_matriz(int matriz[][valor_max],int tam_renglon,int tam_columna);
+
 ///////////////////////////////////////
 int main(){
   int  matriz2[4][valor_max],matriztotal[4][valor_max],aux=1,n=3;
@@ -24,20 +22,3 @@ int main(){
   return 1;
 }
 ///////////////////////////////////////
-void imprimir_matriz(int matriz[][valor_max], int tam_renglon,int tam_columna){
-  for(int i=0;i<tam_renglon;i++){
-    for(int j=0;j<tam_columna;j++){
-      printf("%d ",matriz[i][j]);
-    }
-    printf("\n" );
-  }
-}
-
-void escalar(int n,int matriz[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna){
-  for(int i=0;i<tam_renglon;i++){
-    for(int j=0;j<tam_columna;j++){
-        matriztotal[i][j]=n*matriz[i][j];
-    }
-
-  }
-}
