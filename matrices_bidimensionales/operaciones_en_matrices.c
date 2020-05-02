@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-//#include "operaciones_en_matrices.h"
 /////////////////////////////////
 #define valor_max 10
 void suma(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna){
