@@ -41,5 +41,6 @@ int determinante(int dimension,int matriz[][valor_max]);
 */
 void imprimir_matriz(int matriz[][valor_max],int tam_renglon,int tam_columna);
 ////////////////////////////////////////
+void f_imprimir_matriz(FILE *f,int matriz[][valor_max],int tam_renglon,int tam_columna);
 #include "operaciones_en_matrices.c"
 #endif

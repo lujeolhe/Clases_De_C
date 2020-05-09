@@ -12,7 +12,24 @@ int main(){
       }
       matriz[i][j]=aux;
     }
-    scanf(";");
+    if(i<2)
+      scanf("\n");
   }
   imprimir_matriz(matriz,3,3);
+
+  FILE *fp;
+
+ 	char buffer[100] = "Esto es un texto dentro del fichero.\n";
+ 	char lectura[100];
+ 	fp = fopen ( "fichero.txt", "r+" );
+
+ 	fprintf(fp, buffer);
+ 	fprintf(fp, "%s", "\nEsto es otro texto dentro del fichero.\n");
+  f_imprimir_matriz(fp,matriz,3,3);
+  rewind(fp);
+  fgets(lectura,100,fp);
+  printf("Se Leyó del archivo: %s\n",lectura );
+  fgets(lectura,100,fp);
+  printf("Se Leyó del archivo: %s\n",lectura );
+ 	fclose ( fp );
 }
