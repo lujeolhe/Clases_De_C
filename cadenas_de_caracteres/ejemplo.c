@@ -10,12 +10,12 @@
 // MAIN
 /////////////////////////
 int main(){
-  char cadena1[50], cadena2[50];
+  char cadena1[50], cadena3[50];
 	printf("Escribe tu frase: \n");
   scanf("%s",&cadena1);
-  gets(cadena2);
+  gets(cadena3);
 
-  printf("Leimos:\n scanf: %s \n gets: %s",cadena1,cadena2 );
+  printf("Leimos:\n scanf: %s \n gets: %s",cadena1,cadena3 );
 
 }
 
