@@ -1,0 +1,24 @@
+/////////////////////////
+//Librerias
+/////////////////////////
+#include<stdio.h>
+/////////////////////////
+//Prototipos de Func
+/////////////////////////
+
+/////////////////////////
+// MAIN
+/////////////////////////
+int main(){
+  char cadena1[50], cadena3[50];
+	printf("Escribe tu frase: \n");
+  scanf("%s",&cadena1);
+  gets(cadena3);
+
+  printf("Leimos:\n scanf: %s \n gets: %s",cadena1,cadena3 );
+
+}
+
+/////////////////////////
+//Funciones
+/////////////////////////
