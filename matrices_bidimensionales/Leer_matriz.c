@@ -18,7 +18,7 @@ int main(){
       }
     }
     if(i<2){
-      scanf("\n");    
+      scanf("\n");
     }
   }
 
