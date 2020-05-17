@@ -19,10 +19,36 @@ int main(){
 
   gets(cadena3);
 
-  int cuenta_espacios=0;
+  int cuenta_espacios=0,principio_palabra=0,fin_palabra=0;
   for(int i=0;i<50;i++){
-    if(cadena3[i]==32)
+    if(cadena3[i]==32){
       cuenta_espacios++;
+      fin_palabra=i-1;
+      if(((cadena3[principio_palabra]>=65&&cadena3[principio_palabra]<=90) || (cadena3[principio_palabra]>=97&&cadena3[principio_palabra]<=122)) &&
+         ((cadena3[fin_palabra]>=65&&cadena3[fin_palabra]<=90) || (cadena3[fin_palabra]>=97&&cadena3[fin_palabra]<=122))){
+           
+             printf("La palabra %d tiene: %d\n",cuenta_espacios,fin_palabra-principio_palabra+1 );
+         }
+         else{
+            printf("La palabra %d tiene: %d\n",cuenta_espacios,fin_palabra-principio_palabra );
+         }
+
+      principio_palabra=i+1;
+    }
+    if(cadena3[i]==0){
+      fin_palabra=i-1;
+      if(((cadena3[principio_palabra]>=65&&cadena3[principio_palabra]<=90) || (cadena3[principio_palabra]>=97&&cadena3[principio_palabra]<=122)) &&
+         ((cadena3[fin_palabra]>=65&&cadena3[fin_palabra]<=90) || (cadena3[fin_palabra]>=97&&cadena3[fin_palabra]<=122))){
+
+        printf("La palabra %d tiene: %d\n",cuenta_espacios+1,fin_palabra-principio_palabra+1 );
+      }
+      else{
+         printf("La palabra %d tiene: %d\n",cuenta_espacios+1,fin_palabra-principio_palabra);
+      }
+      break;
+    }
+
+    //printf("%d:  %d:\n",i, cadena3[i] );
   }
   int cuenta_letras=0;
   for(int a=0;a<50;a++){
