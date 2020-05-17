@@ -76,3 +76,11 @@ void imprimir_matriz(int matriz[][valor_max], int tam_renglon,int tam_columna){
     printf("\n" );
   }
 }
+void f_imprimir_matriz(FILE *f,int matriz[][valor_max],int tam_renglon,int tam_columna){
+  for(int i=0;i<tam_renglon;i++){
+    for(int j=0;j<tam_columna;j++){
+      fprintf(f,"%d ",matriz[i][j]);
+    }
+    fprintf(f,"\n" );
+  }
+}

@@ -46,5 +46,6 @@ void imprimir_matriz(int matriz[][valor_max],int tam_renglon,int tam_columna);
 *Retorno: No regesa nada. La Funcion imprimir_matriz se realiza por punteros.
 */
 ////////////////////////////////////////
+void f_imprimir_matriz(FILE *f,int matriz[][valor_max],int tam_renglon,int tam_columna);
 #include "operaciones_en_matrices.c"
 #endif
