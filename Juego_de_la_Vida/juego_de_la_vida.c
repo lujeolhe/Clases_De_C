@@ -8,8 +8,8 @@
 //Definiciones
 /////////////////////////
 #define __tiempo 2
-#define __renglones 10
-#define __columnas 10
+#define __renglones 20
+#define __columnas 20
 /////////////////////////
 //Funciones
 /////////////////////////
@@ -18,12 +18,14 @@ void imprimir_matriz(int a[][__renglones][__columnas]);
 void dibujar_celdas(char a[__renglones][__columnas],int b[][__renglones][__columnas]);
 void imprimir_celdas(char a[__renglones][__columnas]);
 void inicializar_juego(int a[][__renglones][__columnas]);
+void contar_vecinos(int a[][__columnas],int vecinos[][__columnas]);
 /////////////////////////
 //Main
 /////////////////////////
 int main(){
   srand (time(NULL)); //semilla
 	int mapa[__tiempo][__renglones][__columnas];
+  int matriz_de_vecinos[__renglones][__columnas];
   char celdas[__renglones][__columnas];
   inicializar_matriz_3D(mapa);
   inicializar_juego(mapa);
@@ -80,6 +82,23 @@ void inicializar_juego(int a[][__renglones][__columnas]){
   for(int renglon=0;renglon<__renglones;renglon++){
     for(int columna=0;columna<__columnas;columna++){
       a[0][renglon][columna]=rand()%2;
+    }
+  }
+}
+void contar_vecinos(int a[][__columnas],int vecinos[][__columnas]){
+  for(int i=0;i<__renglones;i++){
+    for(int j=0;j<__columnas;j++){
+      if(i==j&&i==0){
+        vecinos[i][j]=a[i][j+1]+a[i+1][j+1]+a[i+1][j];
+      }
+      else if(i==j&&i==__columnas){
+        vecinos[i][j]=a[i][j-1]+a[i-1][j-1]+a[i-1][j];
+      }
+      else{
+        vecinos[i][j]=a[i-1][j-1]+a[i-1][j]+a[i-1][j+1]+
+                      a[i][j-1]+a[i][j+1]+
+                      a[i+1][j-1]+a[i+1][j]+a[i+1][j+1];
+      }
     }
   }
 }
