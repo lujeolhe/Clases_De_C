@@ -92,8 +92,8 @@ void muestra(int n){
         switch (n<10) {
           case 1:
             return;
+            break;
         }
-        break;
       default:
         break;
     }
@@ -101,7 +101,15 @@ void muestra(int n){
 }
 
 void rangos(int inferior, int superior){
-
+  while(inferior<=superior){
+    switch (1) {
+      case 1:
+        printf("Raiz digital(%d)\n",inferior );
+        muestra(inferior);
+        break;
+    }
+    inferior++;
+  }
 }
 void funcion_principal(){
   int n;

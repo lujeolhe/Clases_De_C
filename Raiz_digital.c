@@ -54,13 +54,13 @@ int voltear(int n){
   do{
     if(n>0){
       aux+=(n%10)*powl(10,aux_mide);
-      printf("valorr de aux=%d\n",aux );
+      //printf("valorr de aux=%d\n",aux );
       aux_mide--;
       n/=10;
       //printf("valor de n=%d\n",n );
     }
     else{
-      printf("valor de voltear=%d\n",aux );
+      //printf("valor de voltear=%d\n",aux );
       return aux;
 
     }
@@ -92,8 +92,9 @@ void muestra(int n){
         switch (n<10) {
           case 1:
             return;
+            break;
         }
-        break;
+
       default:
         break;
     }
@@ -101,12 +102,30 @@ void muestra(int n){
 }
 
 void rangos(int inferior, int superior){
+  for(;;inferior++){
+    switch (inferior<=superior) {
+      case 1:
+      printf("~~~~~~~~~~~Raiz digital(%d)~~~~~~~~~~~\n",inferior );
+      muestra(inferior);
+      break;
 
+      default:
+      return;
+        break;
+    }
+  }
 }
 void funcion_principal(){
-  int n;
-  printf("dame un numero\n");
-  scanf("%d",&n );
-  muestra(n);
-  printf("-------------------------------------------------------------------\n" );
+  int a,b;
+  while(1){
+    printf("Dame un limite inferior\n");
+    scanf("%d",&a );
+    printf("Dame un limite superior\n" );
+    scanf("%d",&b );
+    (a>0&&a<b)?(a=a):(printf("Dame un numero mayor que 0 y menor que limite superior\n" ));
+
+    printf("-------------------------------------------------------------------\n" );
+    rangos(a,b);
+    printf("-------------------------------------------------------------------\n" );
+  }
 }
