@@ -11,6 +11,14 @@ void suma(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][va
   }
 }
 
+void resta(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna){
+  for(int i=0;i<tam_renglon;i++){
+    for(int j=0;j<tam_columna;j++){
+        matriztotal[i][j]=matriz[i][j]-matriz2[i][j];
+    }
+
+  }
+}
 void multiplicacion2(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna,int tam_renglon2,int tam_columna2){
   for(int i=0;i<tam_renglon&&i<tam_columna2;i++){
     for(int j=0;j<tam_columna&&j<tam_renglon2;j++){
