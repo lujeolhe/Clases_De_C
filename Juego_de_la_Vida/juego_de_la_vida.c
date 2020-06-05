@@ -18,14 +18,10 @@ void imprimir_matriz(int a[][__renglones][__columnas]);
 void dibujar_celdas(char a[__renglones][__columnas],int b[][__renglones][__columnas]);
 void imprimir_celdas(char a[__renglones][__columnas]);
 void inicializar_juego(int a[][__renglones][__columnas]);
-<<<<<<< HEAD
-void contar_vecinos(int a[][__columnas],int vecinos[][__columnas]);
-=======
 void vecinos_vivos(int a[][__renglones][__columnas],int vecinos[__renglones][__columnas]);
 void imprimir_matriz_2D(int a[__renglones][__columnas]);
 void siguiente_futuro(int a[][__renglones][__columnas],int vecinos[__renglones][__columnas]);
 void actualizar_estado(int a[][__renglones][__columnas]);
->>>>>>> master
 /////////////////////////
 //Main
 /////////////////////////
@@ -94,21 +90,6 @@ void inicializar_juego(int a[][__renglones][__columnas]){
     }
   }
 }
-<<<<<<< HEAD
-void contar_vecinos(int a[][__columnas],int vecinos[][__columnas]){
-  for(int i=0;i<__renglones;i++){
-    for(int j=0;j<__columnas;j++){
-      if(i==j&&i==0){
-        vecinos[i][j]=a[i][j+1]+a[i+1][j+1]+a[i+1][j];
-      }
-      else if(i==j&&i==__columnas){
-        vecinos[i][j]=a[i][j-1]+a[i-1][j-1]+a[i-1][j];
-      }
-      else{
-        vecinos[i][j]=a[i-1][j-1]+a[i-1][j]+a[i-1][j+1]+
-                      a[i][j-1]+a[i][j+1]+
-                      a[i+1][j-1]+a[i+1][j]+a[i+1][j+1];
-=======
 
 void vecinos_vivos(int a[][__renglones][__columnas],int vecinos[__renglones][__columnas]){
   for(int renglon=0;renglon<__renglones;renglon++){
@@ -169,13 +150,10 @@ void siguiente_futuro(int a[][__renglones][__columnas],int vecinos[__renglones][
       }
       else{
         a[1][renglon][columna]=0;
->>>>>>> master
       }
     }
   }
 }
-<<<<<<< HEAD
-=======
 
 void actualizar_estado(int a[][__renglones][__columnas]){
   for(int renglon=0;renglon<__renglones;renglon++){
@@ -184,4 +162,3 @@ void actualizar_estado(int a[][__renglones][__columnas]){
     }
   }
 }
->>>>>>> master
