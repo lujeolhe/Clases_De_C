@@ -45,6 +45,13 @@ int main(){
   printf("La suma guardada es: %d+%d=%x\n",a2,b2,suma2);
 
   fclose(archivoBinario);
+
+  time_t tiempo = time(0);
+  struct tm *tlocal = localtime(&tiempo);
+  char output[30];
+  strftime(output,30,"%d/%m/%y %H:%M:%S",tlocal);
+  printf("%s\n",output);
+
   return 0;
 }
 
