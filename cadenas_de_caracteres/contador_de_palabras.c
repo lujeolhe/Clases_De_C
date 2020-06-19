@@ -26,7 +26,7 @@ int main(){
       fin_palabra=i-1;
       if(((cadena3[principio_palabra]>=65&&cadena3[principio_palabra]<=90) || (cadena3[principio_palabra]>=97&&cadena3[principio_palabra]<=122)) &&
          ((cadena3[fin_palabra]>=65&&cadena3[fin_palabra]<=90) || (cadena3[fin_palabra]>=97&&cadena3[fin_palabra]<=122))){
-           
+
              printf("La palabra %d tiene: %d\n",cuenta_espacios,fin_palabra-principio_palabra+1 );
          }
          else{
