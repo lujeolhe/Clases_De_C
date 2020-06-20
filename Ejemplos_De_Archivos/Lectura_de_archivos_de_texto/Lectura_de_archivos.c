@@ -116,7 +116,7 @@ int contar_palabra(FILE *archivoDeTexto,char *palabra_a_buscar){
   while(!feof(archivoDeTexto)){
 
     fscanf(archivoDeTexto,"%s",buffer);
-
+    //Convertir caracteres en minusculas.
     for(int i=0;i<20;i++){
       if((buffer[i]>='A'&&buffer[i]<='Z')){
           buffer[i]=buffer[i]+32;
@@ -125,16 +125,24 @@ int contar_palabra(FILE *archivoDeTexto,char *palabra_a_buscar){
           buffer[i]=buffer[i];
         }
       }
+
+      //Los caracteres que no sean letras se saltan.
+      printf("Esto es lo que tiene buffer en contar_palabra antes de entrar al while: %u\n",buffer[0] );
+      while((buffer[0]>0 && buffer[0]<'A')||(buffer[0]>'Z' && buffer[0]<'a')||buffer[0]>'z'){
+        //printf("Esto es lo que tiene buffer completo antes del for en contar_palabra: %s\n",buffer );
+        //printf("Esto es lo que tiene buffer en contar_palabra: %c\n",buffer[0] );
+        for(int i=0;i<19;i++){
+          buffer[i]=buffer[i+1];
+        }
+        //printf("Esto es lo que tiene buffer completo despues del for en contar_palabra: %s\n",buffer );
+      }
       //Compara los arreglos de caracteres
       //if(!strcmp(buffer,palabra_a_buscar))
     if(!strncmp(buffer,palabra_a_buscar,tam_palabra)){
       printf("%s\n",buffer );
         contador++;
 
-      ////////////tarea/////////////
-      /*como hacer que el "contar palabras" cuente una palabra aunque tenga un
-      simbolo antes de la palabra, y tambien que la cuente independientemente sean mayusculas o minusculas*/
-      //Crear una funcion que si detecta que una palabra no empieza en una letra, recorro el arreglo.
+
     }
     for(int i=0;i<20;i++){
       buffer[i]=0;
