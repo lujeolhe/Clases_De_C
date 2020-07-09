@@ -49,12 +49,14 @@ typedef struct Celda_RGB{
   char Padding [2];
 } CELDA_RGB;
 
-typedef struct Todo{
-  CELDA_RGB *colores;
-  int numero_de_celdas;
+typedef struct MP{
+  RGB_COLOR *colores;
+  int renglon_de_pixeles;
+  int columna_de_pixeles;
 }MATRIZ_DE_PIXELES;
 
 int main(){
+  /// Para conocer el numero de bytes que va tener nuestra imagen hay multiplicar el numero de pixeles por 3 mas 54 (que es el tamaño de los encabezados de bits)
   FILE *archivoBinario;
   archivoBinario=fopen("Imagen.bmp", "wb");
   if(!archivoBinario){
@@ -82,11 +84,11 @@ int main(){
     b.BIM_header[1]=0x00;
     b.BIM_header[2]=0x00;
     b.BIM_header[3]=0x00;
-    b.Width_in_pixels[0]=0x04; //Largo del tamaño de los pixeles
+    b.Width_in_pixels[0]=0x04; //Largo del tamaño de los pixeles, menor que 4 es con padding
     b.Width_in_pixels[1]=0x00;
     b.Width_in_pixels[2]=0x00;
     b.Width_in_pixels[3]=0x00;
-    b.Height_in_pixels[0]=0x02;//ALto del tamaño de los pixeles
+    b.Height_in_pixels[0]=0x02; //ALto del tamaño de los pixeles
     b.Height_in_pixels[1]=0x00;
     b.Height_in_pixels[2]=0x00;
     b.Height_in_pixels[3]=0x00;
@@ -118,7 +120,7 @@ int main(){
     b.Means[1]=0x00;
     b.Means[2]=0x00;
     b.Means[3]=0x00;
-    
+
     // En el formato BMP se le de izauierda a derecha y de abajo hacia arriba
 
     CELDA_RGB c[4];
@@ -151,8 +153,36 @@ int main(){
     // El padding controla como se ve la imagen, horizontal o vertical.
 
     MATRIZ_DE_PIXELES m;
-    m.colores=c;
-    m.numero_de_celdas=2;
+    RGB_COLOR vector_de_pixeles[8];
+    m.colores=vector_de_pixeles;
+    m.renglon_de_pixeles=2;
+    m.columna_de_pixeles=4;
+    vector_de_pixeles[0].Azul=0xFF;
+    vector_de_pixeles[0].Verde=0x00;
+    vector_de_pixeles[0].Rojo=0xE5;
+    vector_de_pixeles[1].Azul=0x00;
+    vector_de_pixeles[1] .Verde=0xFF;
+    vector_de_pixeles[1].Rojo=0xB3;
+    vector_de_pixeles[2].Azul=0x00;
+    vector_de_pixeles[2].Verde=0x83;
+    vector_de_pixeles[2].Rojo=0xFF;
+    vector_de_pixeles[3].Azul=0x00;
+    vector_de_pixeles[3].Verde=0x00;
+    vector_de_pixeles[3].Rojo=0x00;
+
+    vector_de_pixeles[4].Azul=0xFF;
+    vector_de_pixeles[4].Verde=0x0A;
+    vector_de_pixeles[4].Rojo=0x00;
+    vector_de_pixeles[5].Azul=0xF2;
+    vector_de_pixeles[5].Verde=0xFF;
+    vector_de_pixeles[5].Rojo=0x00;
+    vector_de_pixeles[6].Azul=0xFC;
+    vector_de_pixeles[6].Verde=0x5F;
+    vector_de_pixeles[6].Rojo=0xFF;
+    vector_de_pixeles[7].Azul=0x8E;
+    vector_de_pixeles[7].Verde=0xD9;
+    vector_de_pixeles[7].Rojo=0xFF;
+
     //Los colores necesitan 4 bytes para generarse.
 
     /*Como a y b no son punteros o arreglos se les coloca & para mandar
@@ -160,6 +190,9 @@ int main(){
     fwrite(&a,sizeof(BMP_HEADER),1,archivoBinario);
     fwrite(&b,sizeof(DIB_HEADER),1,archivoBinario);
     fwrite(c,sizeof(CELDA_RGB),4,archivoBinario);
+    //fwrite(vector_de_pixeles,sizeof(RGB_COLOR),8,archivoBinario);
+
+
   /* char header_BMP[14];
     char header_DIB[40];
     char Pixel_array[16];
