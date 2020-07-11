@@ -1,0 +1,189 @@
+***********************************************
+Se inicializo el programa 06/06/20 12:32:07
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:299,el pow da: 1, la multiplicacion da: 0
+En la funcion voltear el valor de aux es:299
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:319,el pow da: 1, la multiplicacion da: 0
+En la funcion voltear el valor de aux es:319
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:320,el pow da: 1, la multiplicacion da: 0
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:320
+En la funcion ensena_sumaraices el valor de aux es:320
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 12:32:50
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 1, la multiplicacion da: 300
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 1, la multiplicacion da: 200
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 1, la multiplicacion da: 100
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 12:39:01
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 12:41:53
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 13:05:51
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: 1079574528
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 13:07:15
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 13:10:42
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 13:11:34
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:300,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:300
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:321,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:321
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:321
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
+***********************************************
+Se inicializo el programa 06/06/20 13:12:25
+Se ingreso el numero: 123
+En la funcion muestra el valor de n es:123
+En la funcion voltear el valor de aux es:0
+En la funcion voltear el valor de aux_mide es:2
+En la funcion voltear el valor de aux es:299,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:299
+En la funcion voltear el valor de aux_mide es:1
+En la funcion voltear el valor de aux es:319,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:319
+En la funcion voltear el valor de aux_mide es:0
+En la funcion voltear el valor de aux es:320,el pow da: 0, la multiplicacion da: -939524096
+En la funcion voltear el valor de aux es:320
+En la funcion voltear el valor de aux_mide es:-1
+El nuevo valor de aux es:320
+En la funcion ensena_sumaraices el valor de aux es:320
+En la funcion ensena_sumaraices el valor de aux es:32
+En la funcion ensena_sumaraices el valor de aux es:3
+El nuevo valor de aux es:3
+El nuevo valor de n es:6
