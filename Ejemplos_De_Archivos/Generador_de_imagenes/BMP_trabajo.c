@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include <string.h>
+#include <stdint.h>
 /////////////////////////
 //Definiciones
 /////////////////////////
@@ -81,6 +82,21 @@ void cambiar_tamnio_matriz_de_datos(DIB_HEADER *t, int new_mapbit );
 //Funcion Principal
 /////////////////////////
 int main(){
+  FILE *archivoEjemplo;
+  archivoEjemplo=fopen("Imagen_ejemplo.bmp", "wb");
+  if(!archivoEjemplo){
+    printf("No se pude abrir o crear el archivoEjemplo\n" );
+    exit(1);
+    }
+    char f=0x80;
+    unsigned char j=0x80;
+     int8_t t=-1;
+     int g=0x01EF;
+    fwrite(&f,sizeof(char),1,archivoEjemplo);
+    fwrite(&j,sizeof(unsigned char),1,archivoEjemplo);
+    fwrite(&t,sizeof(int8_t),1,archivoEjemplo);
+    fwrite(&g,sizeof(int),1,archivoEjemplo);
+    fclose(archivoEjemplo);
   FILE *archivoBinario;
   archivoBinario=fopen("Imagen.bmp", "wb");
   if(!archivoBinario){
@@ -139,33 +155,33 @@ int main(){
 
     //Este for nos da el fondo de la imagen.
     for(int i=0;i<147;i++){
-      asignarcolor_RGB_Color(&vector_de_pixeles[i],0xFF,0x00,0x00);
+      asignarcolor_RGB_Color(&vector_de_pixeles[i],0x60,0x39,0x39);
       //asignarcolor_RGB_Color(&vector_de_pixeles[i],0xFF,0xFF,0xFF);
     }
     //Estas funciones nos dan el patron de la imagen.
   /*  for(int a=22;a<41;a++){
       if(a==22||a==26||a==28||a==30||a==31||a==34||a==35||a==36||a==38||a==39||a==40){
-        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFF,0xFF);
       }
     }
     for(int a=43;a<61;a++){
       if(a==43||a==47||a==49||a==51||a==53||a==55||a==59||a==61){
-        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFF,0xFF);
       }
     }
     for(int a=64;a<82;a++){
       if(a==64||a==65||a==66||a==68||a==69||a==70||a==72||a==73||a==76||a==80||a==82){
-        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFF,0xFF);
       }
     }
     for(int a=85;a<103;a++){
       if(a==85||a==87||a==89||a==91||a==93||a==95||a==97||a==101||a==103){
-        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFF,0xFF);
       }
     }
     for(int a=106;a<124;a++){
       if(a==106||a==107||a==108||a==110||a==111||a==112||a==114||a==115||a==118||a==122||a==123||a==124){
-        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFF,0xFF);
       }
     }
     */
@@ -251,11 +267,11 @@ void inicializar_DIB_HEADER(DIB_HEADER *d){
   d->Size_of_the_raw[1]=0x00;
   d->Size_of_the_raw[2]=0x00;
   d->Size_of_the_raw[3]=0x00;
-  d->Print_resolution_horizontal[0]=0x13;
+  d->Print_resolution_horizontal[0]=0x13;//valor anterior 13
   d->Print_resolution_horizontal[1]=0x0B;
   d->Print_resolution_horizontal[2]=0x00;
   d->Print_resolution_horizontal[3]=0x00;
-  d->Print_resolution_vertical[0]=0x13;
+  d->Print_resolution_vertical[0]=0x13;//valor anterior 13
   d->Print_resolution_vertical[1]=0x0B;
   d->Print_resolution_vertical[2]=0x00;
   d->Print_resolution_vertical[3]=0x00;
@@ -323,5 +339,3 @@ void cambiar_tamnio_matriz_de_datos(DIB_HEADER *t, int new_mapbit ){
     printf("%X\n",t->Size_of_the_raw[i] );
   }
 }
-
-///tarea hacer una imagen de 3x4
