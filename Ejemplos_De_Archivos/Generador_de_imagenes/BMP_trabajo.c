@@ -10,6 +10,7 @@
 /////////////////////////
 // para ver la imagne en hexadecimal se coloca el siguiente comando en la consola "cat .\Imagen.bmp( nombre de la imagen) |format-hex"
 //cat= nos muestra lo que tiene un archivo de texto.
+
 /////////////////////////
 //Estructuras
 /////////////////////////
@@ -17,37 +18,37 @@
 *Descripcion: Tiene Los valores del BMP y los tiene en forma de char.
 */
 typedef struct BMPH{
-  char ID_field[2];
-  char Size_of_the_BMP_file[4];
-  char Application_specific[2];
-  char Application_specific_2[2];
-  char Offset[4];
+  unsigned char ID_field[2];
+  unsigned char Size_of_the_BMP_file[4];
+  unsigned char Application_specific[2];
+  unsigned char Application_specific_2[2];
+  unsigned char Offset[4];
 } BMP_HEADER;
 
 /*Estructura DIB_HEADER:
 *Descripcion: Tiene Los valores del DIB y los tiene en forma de char.
 */
 typedef struct DIB{
-  char BIM_header[4];
-  char Width_in_pixels[4];
-  char Height_in_pixels[4];
-  char Number_of_color[2];
-  char Number_of_bits[2];
-  char BI_RGB[4];
-  char Size_of_the_raw[4];
-  char Print_resolution_horizontal[4];
-  char Print_resolution_vertical[4];
-  char Number_of_colors_in_the_palette[4];
-  char Means[4];
+  unsigned char BIM_header[4];
+  unsigned char Width_in_pixels[4];
+  unsigned char Height_in_pixels[4];
+  unsigned char Number_of_color[2];
+  unsigned char Number_of_bits[2];
+  unsigned char BI_RGB[4];
+  unsigned char Size_of_the_raw[4];
+  unsigned char Print_resolution_horizontal[4];
+  unsigned char Print_resolution_vertical[4];
+  unsigned char Number_of_colors_in_the_palette[4];
+  unsigned char Means[4];
 } DIB_HEADER;
 
 /*Estructura RGB_COLOR:
 *Descripcion: Tiene Los colores principales del RGB.
 */
 typedef struct RGB{
-  char Azul;
-  char Verde;
-  char Rojo;
+  unsigned char Azul;
+  unsigned char Verde;
+  unsigned char Rojo;
 } RGB_COLOR;
 
 /*Estructura CELDA_RGB:
@@ -55,7 +56,7 @@ typedef struct RGB{
 */
 typedef struct Celda_RGB{
   RGB_COLOR colores[2];
-  char Padding [2];
+  unsigned char Padding [2];
 } CELDA_RGB;
 
 /*Estructura MATRIZ_DE_PIXELES:
@@ -72,7 +73,7 @@ typedef struct MP{
 /////////////////////////
 void inicializar_BMP_HEADER(BMP_HEADER *h);
 void inicializar_DIB_HEADER(DIB_HEADER *d);
-void asignarcolor_RGB_Color(RGB_COLOR *p,char rojo, char verde, char azul);
+void asignarcolor_RGB_Color(RGB_COLOR *p,unsigned char rojo, unsigned char verde, unsigned char azul);
 void cambiar_tamanio_BMP_bytes(BMP_HEADER *t,int new_size);
 void cambiar_tamanio_DIB_HEADER(DIB_HEADER *t, int new_Width,int new_Height);
 void cambiar_tamnio_matriz_de_datos(DIB_HEADER *t, int new_mapbit );
@@ -92,11 +93,12 @@ int main(){
     DIB_HEADER b;
     inicializar_DIB_HEADER(&b);
 
-    cambiar_tamanio_BMP_bytes(&a,0x24);
+    cambiar_tamanio_BMP_bytes(&a,0x1EF);//Como saber cuantos bits ocupa el trabajo, pues se multiplica el Width por el Height y al resultado se le multiplica por 3 y se le suma 54.
+    a.Size_of_the_BMP_file[0]=0xEF;
+    printf("%X\n",a.Size_of_the_BMP_file[0] );
+    cambiar_tamanio_DIB_HEADER(&b,21,7);
 
-    cambiar_tamanio_DIB_HEADER(&b,4,3);
-
-    cambiar_tamnio_matriz_de_datos(&b,12);
+    cambiar_tamnio_matriz_de_datos(&b,441);//Como saber cuantos bits ocupa el trabajo, pues se multiplica el Width por el Height y al resultado se le multiplica por 3.
 
     // En el formato BMP se le de izauierda a derecha y de abajo hacia arriba
 
@@ -130,11 +132,46 @@ int main(){
     // El padding controla como se ve la imagen, horizontal o vertical.
 
     MATRIZ_DE_PIXELES m;
-    RGB_COLOR vector_de_pixeles[12];
+    RGB_COLOR vector_de_pixeles[147];
     m.colores=vector_de_pixeles;
-    m.renglon_de_pixeles=3;
-    m.columna_de_pixeles=4;
+    m.renglon_de_pixeles=7;
+    m.columna_de_pixeles=21;
 
+    //Este for nos da el fondo de la imagen.
+    for(int i=0;i<147;i++){
+      asignarcolor_RGB_Color(&vector_de_pixeles[i],0xFF,0x00,0x00);
+      //asignarcolor_RGB_Color(&vector_de_pixeles[i],0xFF,0xFF,0xFF);
+    }
+    //Estas funciones nos dan el patron de la imagen.
+  /*  for(int a=22;a<41;a++){
+      if(a==22||a==26||a==28||a==30||a==31||a==34||a==35||a==36||a==38||a==39||a==40){
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+      }
+    }
+    for(int a=43;a<61;a++){
+      if(a==43||a==47||a==49||a==51||a==53||a==55||a==59||a==61){
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+      }
+    }
+    for(int a=64;a<82;a++){
+      if(a==64||a==65||a==66||a==68||a==69||a==70||a==72||a==73||a==76||a==80||a==82){
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+      }
+    }
+    for(int a=85;a<103;a++){
+      if(a==85||a==87||a==89||a==91||a==93||a==95||a==97||a==101||a==103){
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+      }
+    }
+    for(int a=106;a<124;a++){
+      if(a==106||a==107||a==108||a==110||a==111||a==112||a==114||a==115||a==118||a==122||a==123||a==124){
+        asignarcolor_RGB_Color(&vector_de_pixeles[a],0xFF,0xFE,0x00);
+      }
+    }
+    */
+
+
+    /*
     asignarcolor_RGB_Color(&vector_de_pixeles[0],0x00,0x00,0x00);
     asignarcolor_RGB_Color(&vector_de_pixeles[1],0xFF,0x00,0x00);
     asignarcolor_RGB_Color(&vector_de_pixeles[2],0xFF,0x00,0x00);
@@ -149,7 +186,7 @@ int main(){
     asignarcolor_RGB_Color(&vector_de_pixeles[9],0xFF,0x00,0x00);
     asignarcolor_RGB_Color(&vector_de_pixeles[10],0xFF,0x00,0x00);
     asignarcolor_RGB_Color(&vector_de_pixeles[11],0x00,0x00,0x00);
-
+*/
     //Los colores necesitan 4 bytes para generarse.
 
     /*Como a y b no son punteros o arreglos se les coloca & para mandar
@@ -157,7 +194,7 @@ int main(){
     fwrite(&a,sizeof(BMP_HEADER),1,archivoBinario);
     fwrite(&b,sizeof(DIB_HEADER),1,archivoBinario);
     //fwrite(c,sizeof(CELDA_RGB),4,archivoBinario);
-    fwrite(vector_de_pixeles,sizeof(RGB_COLOR),12,archivoBinario);
+    fwrite(vector_de_pixeles,sizeof(RGB_COLOR),147,archivoBinario);
     fclose(archivoBinario);
 }
 /////////////////////////
@@ -236,7 +273,7 @@ void inicializar_DIB_HEADER(DIB_HEADER *d){
 *Parametros: Un puntero RGB_COLOR *p, char rojo, char verde, char azul.
 *Retorno: No regesa nada.
 */
-void asignarcolor_RGB_Color(RGB_COLOR *p,char rojo, char verde, char azul){
+void asignarcolor_RGB_Color(RGB_COLOR *p,unsigned char rojo,unsigned  char verde, unsigned char azul){
   p->Azul=azul;
   p->Verde=verde;
   p->Rojo=rojo;
@@ -249,11 +286,16 @@ void asignarcolor_RGB_Color(RGB_COLOR *p,char rojo, char verde, char azul){
 */
 void cambiar_tamanio_BMP_bytes(BMP_HEADER *t,int new_size){
   int mascara=0x000000FF;
+  for(int i=0;i<4;i++){
+    t->Size_of_the_BMP_file[i]=(unsigned char)((new_size>>8*i)&mascara);
+    printf("Estamos dentro de la funcion ambiar tamanio BMP :%X\n",t->Size_of_the_BMP_file[i] );
+  }
+  /*
   t->Size_of_the_BMP_file[0]=mascara&new_size;
   t->Size_of_the_BMP_file[1]=(new_size>>8)&mascara;
   t->Size_of_the_BMP_file[2]=(new_size>>16)&mascara;
   t->Size_of_the_BMP_file[3]=(new_size>>24)&mascara;
-
+  */
 }
 /*Funcion cambiar_tamanio_DIB_HEADER:
 *Descripcion: Se le cambia el tamaño al Width_in_pixels y al Height_in_pixels, agregando una mascara
@@ -277,7 +319,8 @@ void cambiar_tamanio_DIB_HEADER(DIB_HEADER *t, int new_Width,int new_Height){
 void cambiar_tamnio_matriz_de_datos(DIB_HEADER *t, int new_mapbit ){
   int mascara=0x000000FF;
   for(int i=0;i<4;i++){
-    t->Size_of_the_raw[i]=(new_mapbit>>i*8)&mascara;
+    t->Size_of_the_raw[i]=(unsigned char)((new_mapbit>>i*8)&mascara);
+    printf("%X\n",t->Size_of_the_raw[i] );
   }
 }
 
