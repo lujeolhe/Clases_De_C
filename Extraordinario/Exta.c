@@ -4,11 +4,11 @@ Descripcion: Examen Extraordinario.*/
 /////////////////////////
 //Librerias
 /////////////////////////
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <stdint.h>
+#include <stdint.h>*/
 /////////////////////////
 //Definiciones
 /////////////////////////
