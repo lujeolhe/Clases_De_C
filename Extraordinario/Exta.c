@@ -26,7 +26,7 @@ typedef struct as{
   float Iluminacion;
   float Decoracion;
 }aspectos;
-//Contiene los aspectos generales del restaurante
+//Contiene los detalles del restaurante
 typedef struct res{
   char Localidad[30];
   int Numero_de_clientes;
@@ -35,6 +35,9 @@ typedef struct res{
   float nota_global;
 }restaurante;
 
+typedef struct cc{
+  char cadena[20];
+}cadena;
 /////////////////////////
 //Declaracion de Funciones
 /////////////////////////
@@ -44,29 +47,92 @@ void inicializar_restaurante(restaurante *empieza, char *localidad);
 void promediar_aspectos(restaurante *media);
 void obtener_promedio_global(restaurante *promedio);
 void Histograma(aspectos *encuestas,int numero_de_encuestas);
-void evaluacion_de_aspecto(aspectos *encuestas);
-void ordenar_promedios(float vector[7][2]);
+void evaluacion_de_aspectos(aspectos *encuestas);
+void ordenar_promedios(float vector[][2],int numero_de_elementos);
+void imprimir_info_restaurante(restaurante *sucursal);
+void evaluar_restaurantes(restaurante *sucursales,int numero_de_restaurantes);
 /////////////////////////
 //Funcion Principal
 /////////////////////////
 int main(){
-  //variable de control de los aspectos.
-  aspectos a;
-  inicializar_encuesta(&a);
-  printf("%2.0f\n",a.Atencion );
-  //variable de control de restaurante.
-  restaurante b;
-  inicializar_restaurante(&b,"Mexico");
-  printf("Localidad: %s  Clientes:%d  Nota Global: %5.2f\n",b.Localidad,b.Numero_de_clientes,b.nota_global );
-  printf("Atencion Promedio:\t%2.3f,\n",b.promedio.Atencion );
-  printf("Calidad Promedio:\t%2.3f,\n",b.promedio.Calidad );
-  printf("Justicia Promedio:\t%2.3f,\n",b.promedio.Justicia );
-  printf("Ambiente Promedio:\t%2.3f,\n",b.promedio.Ambiente );
-  printf("Musica Promedio:\t%2.3f,\n",b.promedio.Musica);
-  printf("Iluminacion Promedio:\t%2.3f,\n",b.promedio.Iluminacion );
-  printf("Decoracion Promedio:\t%2.3f,\n",b.promedio.Decoracion );
-  evaluacion_de_aspecto(&b.promedio);
-  Histograma(b.encuestas,b.Numero_de_clientes);
+  srand (time(NULL));
+  restaurante sucursales[3];
+  cadena localidades[3]={"Mexico","Estados Unidos","Canada"};
+  for(int i=0;i<3;i++){
+    inicializar_restaurante(&sucursales[i],localidades[i].cadena);
+  }
+
+  int opc=0;
+  int opc2=0;
+  char opc3;
+
+  while(opc!=3){
+    printf("Escoge una opcion:\n");
+    printf("1. Informacion general de los restaurantes\n" );
+    printf("2. Informacion de restaurante\n" );
+    printf("3. Salir\n" );
+    scanf("%d",&opc );
+    switch (opc) {
+      case 1:
+        system("cls");
+        evaluar_restaurantes(sucursales,3);
+        printf("\n" );
+        printf("Presiona presione enter para continuar...\n" );
+        fflush(stdin);
+        scanf("%c",&opc3 );
+        system("cls");
+        break;
+
+      case 2:
+        system("cls");
+        printf("Escoge el restaurante que quieres la informacion:\n" );
+        printf("1. México\n" );
+        printf("2. Estados Unidos\n" );
+        printf("3. Canada\n" );
+        printf("4. Regresar al menu anterior\n" );
+        scanf("%d",&opc2 );
+        switch (opc2) {
+          case 1:
+            system("cls");
+            imprimir_info_restaurante(&sucursales[0]);
+            printf("\n" );
+            printf("Presiona presione enter para continuar...\n" );
+            fflush(stdin);
+            scanf("%c",&opc3 );
+            system("cls");
+            break;
+
+          case 2:
+            system("cls");
+            imprimir_info_restaurante(&sucursales[1]);
+            printf("\n" );
+            printf("Presiona presione enter para continuar...\n" );
+            fflush(stdin);
+            scanf("%c",&opc3 );
+            system("cls");
+            break;
+
+          case 3:
+            system("cls");
+            imprimir_info_restaurante(&sucursales[2]);
+            printf("\n" );
+            printf("Presiona presione enter para continuar...\n" );
+            fflush(stdin);
+            scanf("%c",&opc3 );
+            system("cls");
+            break;
+          case 4:
+            system("cls");
+            break;
+          default:
+            break;
+        }
+      case 3:
+        break;
+      default:
+        break;
+    }
+  }
 
 }
 /////////////////////////
@@ -76,7 +142,7 @@ int main(){
 //Les da valores aleatorios a los aspectos.
 void inicializar_encuesta(aspectos *encuesta){
   //les da un valor diferente cada vez que se corre el programa
-  srand (time(NULL));
+  //srand (time(NULL));
   encuesta->Atencion=rand()%10+1;
   encuesta->Calidad=rand()%10+1;
   encuesta->Justicia=rand()%10+1;
@@ -88,7 +154,7 @@ void inicializar_encuesta(aspectos *encuesta){
 
 //Esta funcion nos da un numero aleatorio de clientes entre el 10 y el 20.
 void inicializar_encuestados(restaurante *clientes){
-    srand (time(NULL));
+  //  srand (time(NULL));
     //Como en la funcion rand empieza en 0 le sumamos 10 para que comience en 10..
     clientes->Numero_de_clientes=rand()%11+10;
 }
@@ -172,7 +238,7 @@ void obtener_promedio_global(restaurante *promedio){
   aux_promedio+=promedio->promedio.Musica;
   aux_promedio+=promedio->promedio.Iluminacion;
   aux_promedio+=promedio->promedio.Decoracion;
-    printf("Promedio antes de salir, duncion obtener promedio:%2.2f\n",aux_promedio );
+  //  printf("Promedio antes de salir, duncion obtener promedio:%2.2f\n",aux_promedio );
     //Se divide la suma de los promedios entre el numero de aspectos que hay.
   promedio->nota_global=aux_promedio/7;
 }
@@ -213,7 +279,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
      }
      // Estas es la representacion de la grafica.
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -231,7 +297,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -249,7 +315,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -267,7 +333,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -285,7 +351,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -303,7 +369,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -321,7 +387,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
        encuestas++;
      }
      for(int j=0;j<10;j++){
-       printf("%d\t",j+1 );
+       printf("%d\t|",j+1 );
        int k=0;
        while(k<vector[j][i]){
          printf("*");
@@ -337,7 +403,7 @@ void Histograma(aspectos *encuestas,int numero_de_encuestas){
  }
 }
 
-void evaluacion_de_aspecto(aspectos *encuestas){
+void evaluacion_de_aspectos(aspectos *encuestas){
   // se declara un variable de tipo flotante bidimencional.
   float vector[7][2];
 //Estas declaraciones tienen el valor de los aspectos.
@@ -354,17 +420,17 @@ void evaluacion_de_aspecto(aspectos *encuestas){
     vector[i][1]=i+1;
     i++;
   }while(i<7);
-  //este ciclos imprimen a la variable vector.
-  for(int i=0;i<7;i++){
+  //este ciclos imprimen a la variable vector desordenada.
+  /*for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}
+}*/
   printf("\n" );
 //esta funicion ordena los valores de menor a mayor.x
-  ordenar_promedios(vector);
-  //este ciclos imprimen a la variable vector.
-  for(int i=0;i<7;i++){
+  ordenar_promedios(vector,7);
+  //este ciclos imprimen a la variable vector ordenada..
+  /*for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}
+}*/
 
 /*Despues de ordenarlos nos damos cuenta que el valor mas
 grande esta al final del arreglo y el mas pequeño estas al principio*/
@@ -373,80 +439,100 @@ grande esta al final del arreglo y el mas pequeño estas al principio*/
   //se hace un string en la condicion porque el valor de vector es flotante.
   //se coloca esa posicion porque es en donde esta el valor de mayor tamaño.
   // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
-  switch ((int)(vector[6][1])) {
-    case 1:
+int j=0;
+  while(vector[6-j][0]==vector[6][0]){
+    switch ((int)(vector[6-j][1])) {
+      case 1:
     //se usa la funcion strcpy para remplazar el arreglo nulo con el contenido entre comillas.
-      strcpy(aspect,"Antencion");
-      break;
-    case 2:
-      strcpy(aspect,"Calidad");
-      break;
-    case 3:
-      strcpy(aspect,"Justicia");
-      break;
-    case 4:
-      strcpy(aspect,"Ambiente");
-      break;
-    case 5:
-      strcpy(aspect,"Musica");
-      break;
-    case 6:
-      strcpy(aspect,"Iluminacion");
-      break;
-    case 7:
-      strcpy(aspect,"Decoracion");
-      break;
-    default:
-      strcpy(aspect,"");
-      break;
+        strcpy(aspect,"Antencion");
+        break;
+      case 2:
+        strcpy(aspect,"Calidad");
+        break;
+      case 3:
+        strcpy(aspect,"Justicia");
+        break;
+      case 4:
+        strcpy(aspect,"Ambiente");
+        break;
+      case 5:
+        strcpy(aspect,"Musica");
+        break;
+      case 6:
+        strcpy(aspect,"Iluminacion");
+        break;
+      case 7:
+        strcpy(aspect,"Decoracion");
+        break;
+      default:
+        strcpy(aspect,"");
+        break;
   }
-  printf("El aspecto mejor evaluado es: %s\n",aspect );
+    printf("El aspecto mejor evaluado es: %s\n",aspect );
+    j++;
+}
+
+
+
+
+
 
   char aspect2[20]="";
+  int k=0;
+    while(vector[0+k][0]==vector[0][0]){
+      switch ((int)(vector[0+k][1])) {
+
+            case 1:
+                strcpy(aspect2,"Antencion");
+                break;
+            case 2:
+              strcpy(aspect2,"Calidad");
+              break;
+            case 3:
+              strcpy(aspect2,"Justicia");
+              break;
+            case 4:
+              strcpy(aspect2,"Ambiente");
+              break;
+            case 5:
+              strcpy(aspect2,"Musica");
+              break;
+            case 6:
+              strcpy(aspect2,"Iluminacion");
+              break;
+            case 7:
+              strcpy(aspect2,"Decoracion");
+              break;
+            default:
+              strcpy(aspect2,"");
+              break;
+          }
+          printf("El aspecto peor evaluado es: %s\n",aspect2 );
+          k++;
+  }
   //en este esta el de menor valor
   // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
-  switch ((int)(vector[0][1])) {
-    case 1:
-      strcpy(aspect2,"Antencion");
-      break;
-    case 2:
-      strcpy(aspect2,"Calidad");
-      break;
-    case 3:
-      strcpy(aspect2,"Justicia");
-      break;
-    case 4:
-      strcpy(aspect2,"Ambiente");
-      break;
-    case 5:
-      strcpy(aspect2,"Musica");
-      break;
-    case 6:
-      strcpy(aspect2,"Iluminacion");
-      break;
-    case 7:
-      strcpy(aspect2,"Decoracion");
-      break;
-    default:
-      strcpy(aspect2,"");
-      break;
-  }
-  printf("El aspecto peor evaluado es: %s\n\n",aspect2 );
 }
-void ordenar_promedios(float vector[7][2]){
+
+void ordenar_promedios(float vector[][2],int numero_de_elementos){
+  //iteracion numero de vueltas
     int iteracion = 0;
+  //es una bandera para saber si el numero cambio de lugar o no.
     char permutation = 1;
+  //es el contador de nuestras iteraciones
     int actual;
 
     while ( permutation) {
         permutation = 0;
         iteracion ++;
-        for (actual=0;actual<7-iteracion;actual++) {
+        for (actual=0;actual<numero_de_elementos-iteracion;actual++) {
             if (vector[actual][0]>vector[actual+1][0]){
                 permutation = 1;
                 // Intercambiamos los dos elementos
+                // temp es una variable auxiliar.
                 int temp2= vector[actual][1];
                 int temp = vector[actual][0];
+                //aqui se hace el intercambio de lugar
                 vector[actual][0] = vector[actual+1][0];
                 vector[actual+1][0] = temp;
 
@@ -455,4 +541,82 @@ void ordenar_promedios(float vector[7][2]){
             }
         }
     }
+}
+
+void imprimir_info_restaurante(restaurante *sucursal){
+  restaurante b=*sucursal;
+  printf("***************************************************************************************\n" );
+  printf("Localidad: %s || Clientes:%d || Nota Global: %5.2f\n",b.Localidad,b.Numero_de_clientes,b.nota_global );
+  printf("\n" );
+  printf("Atencion Promedio:\t%2.3f,\n",b.promedio.Atencion );
+  printf("Calidad Promedio:\t%2.3f,\n",b.promedio.Calidad );
+  printf("Justicia Promedio:\t%2.3f,\n",b.promedio.Justicia );
+  printf("Ambiente Promedio:\t%2.3f,\n",b.promedio.Ambiente );
+  printf("Musica Promedio:\t%2.3f,\n",b.promedio.Musica);
+  printf("Iluminacion Promedio:\t%2.3f,\n",b.promedio.Iluminacion );
+  printf("Decoracion Promedio:\t%2.3f,\n",b.promedio.Decoracion );
+  evaluacion_de_aspectos(&b.promedio);
+  printf("\n" );
+  Histograma(b.encuestas,b.Numero_de_clientes);
+}
+
+void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
+  float vector[numero_de_restaurantes][2];
+  for(int i=0;i<numero_de_restaurantes;i++){
+    vector[i][0]=(sucursales+i)->nota_global;
+    vector[i][1]=i+1;
+  }
+
+  ordenar_promedios(vector,numero_de_restaurantes);
+
+  char aspect[20]="";
+  int j=0;
+    while(vector[numero_de_restaurantes-1-j][0]==vector[numero_de_restaurantes-1][0]&&j<numero_de_restaurantes){
+      switch ((int)(vector[numero_de_restaurantes-1-j][1])) {
+
+            case 1:
+                strcpy(aspect,"Mexico");
+                break;
+            case 2:
+              strcpy(aspect,"Estados Unidos");
+              break;
+            case 3:
+              strcpy(aspect,"Canada");
+              break;
+            default:
+              strcpy(aspect,"");
+              break;
+          }
+          printf("El restaurante mejor evaluado es:%s\n",aspect );
+          j++;
+  }
+
+  char aspect2[20]="";
+  int k=0;
+    while(vector[0+k][0]==vector[0][0]&&k<numero_de_restaurantes){
+      switch ((int)(vector[0+k][1])) {
+
+            case 1:
+                strcpy(aspect2,"Mexico");
+                break;
+            case 2:
+              strcpy(aspect2,"Estados Unidos");
+              break;
+            case 3:
+              strcpy(aspect2,"Canada");
+              break;
+            default:
+              strcpy(aspect2,"");
+              break;
+          }
+          printf("El restaurante peor evaluado es:%s\n",aspect2 );
+          k++;
+  }
+
+  int h=0;
+  while(h<numero_de_restaurantes){
+    printf("Localidad:%s - Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
+    sucursales++;
+    h++;
+  }
 }
