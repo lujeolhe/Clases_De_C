@@ -59,18 +59,9 @@ void evaluar_restaurantes(restaurante *sucursales,int numero_de_restaurantes);
 /////////////////////////
 int main(){
   srand (time(NULL));
-<<<<<<< HEAD
-  //variable de tipo restaurante, controla cuantos restaurantes hay.
-  restaurante sucursales[3];
-  // variable de tipo cadena, controla el nombre de las localidades.
-  cadena localidades[3]={"Mexico","Estados Unidos","Canada"};
-  // ciclo para inicializa los restaurantes.
-  for(int i=0;i<3;i++){
-=======
   restaurante sucursales[5];
   cadena localidades[5]={"Mexico","Estados Unidos","Canada","Rusia","China"};
   for(int i=0;i<5;i++){
->>>>>>> extraordinario
     inicializar_restaurante(&sucursales[i],localidades[i].cadena);
   }
 
@@ -91,12 +82,7 @@ int main(){
         system("cls");
         evaluar_restaurantes(sucursales,5);
         printf("\n" );
-<<<<<<< HEAD
-        printf("Presiona presione enter para continuar...\n" );
-        // fflush(stdint) Limpia lo que esta en el buffer.
-=======
         printf("Presiona enter para continuar...\n" );
->>>>>>> extraordinario
         fflush(stdin);
         scanf("%c",&opc3 );
         system("cls");
@@ -104,11 +90,7 @@ int main(){
 
       case 2:
         system("cls");
-<<<<<<< HEAD
-        printf("Escoge el restaurante que quieres la informacion:\n" );
-=======
         printf("Escoge el restaurante del que quieres la informacion:\n" );
->>>>>>> extraordinario
         printf("1. Mexico\n" );
         printf("2. Estados Unidos\n" );
         printf("3. Canada\n" );
@@ -624,13 +606,9 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
     vector[i][0]=(sucursales+i)->nota_global;
     vector[i][1]=i+1;
   }
-<<<<<<< HEAD
-  //se ordenan las notas globales de los restaurantes de menor a mayor.
-=======
   for(int i=0;i<5;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
   }
->>>>>>> extraordinario
   ordenar_promedios(vector,numero_de_restaurantes);
 
   printf("Valores ordenados\n" );
@@ -654,13 +632,8 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
               strcpy(aspect,"Canada");
               break;
             case 4:
-<<<<<<< HEAD
-                strcpy(aspect,"Rusia");
-                break;
-=======
               strcpy(aspect,"Rusia");
               break;
->>>>>>> extraordinario
             case 5:
               strcpy(aspect,"China");
               break;
@@ -687,17 +660,10 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
               strcpy(aspect2,"Canada");
               break;
             case 4:
-<<<<<<< HEAD
-                strcpy(aspect,"Rusia");
-                break;
-            case 5:
-              strcpy(aspect,"China");
-=======
               strcpy(aspect2,"Rusia");
               break;
             case 5:
               strcpy(aspect2,"China");
->>>>>>> extraordinario
               break;
             default:
               strcpy(aspect2,"");
@@ -711,12 +677,7 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
   int h=0;
   //este ciclo es para poder imprimir las localidades y las notas globales de todos los restaurantes
   while(h<numero_de_restaurantes){
-<<<<<<< HEAD
-    printf("Localidad:%s - Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
-    //se incrementa sucursales para poder movernos entre los restaurantes y se puedan imprimir todos.
-=======
     printf("Localidad:%s || Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
->>>>>>> extraordinario
     sucursales++;
     //h es la variable de control, de impresiones.
     h++;
