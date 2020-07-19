@@ -37,7 +37,7 @@ typedef struct res{
   aspectos promedio;
   float nota_global;
 }restaurante;
-
+//Se creo esta estructura para poder utilizar los nombres de los restaurantes.
 typedef struct cc{
   char cadena[20];
 }cadena;
@@ -59,12 +59,16 @@ void evaluar_restaurantes(restaurante *sucursales,int numero_de_restaurantes);
 /////////////////////////
 int main(){
   srand (time(NULL));
+  //variable de tipo restaurante, controla cuantos restaurantes hay.
   restaurante sucursales[3];
+  // variable de tipo cadena, controla el nombre de las localidades.
   cadena localidades[3]={"Mexico","Estados Unidos","Canada"};
+  // ciclo para inicializa los restaurantes.
   for(int i=0;i<3;i++){
     inicializar_restaurante(&sucursales[i],localidades[i].cadena);
   }
 
+  //variables creadas para poder controlar los switch y lo que escribiera el usuario.
   int opc=0;
   int opc2=0;
   char opc3;
@@ -77,10 +81,12 @@ int main(){
     scanf("%d",&opc );
     switch (opc) {
       case 1:
+      // system permite ingresar comando de consola.
         system("cls");
         evaluar_restaurantes(sucursales,3);
         printf("\n" );
         printf("Presiona presione enter para continuar...\n" );
+        // fflush(stdint) Limpia lo que esta en el buffer.
         fflush(stdin);
         scanf("%c",&opc3 );
         system("cls");
@@ -89,7 +95,7 @@ int main(){
       case 2:
         system("cls");
         printf("Escoge el restaurante que quieres la informacion:\n" );
-        printf("1. México\n" );
+        printf("1. Mexico\n" );
         printf("2. Estados Unidos\n" );
         printf("3. Canada\n" );
         printf("4. Regresar al menu anterior\n" );
@@ -145,7 +151,6 @@ int main(){
 //Les da valores aleatorios a los aspectos.
 void inicializar_encuesta(aspectos *encuesta){
   //les da un valor diferente cada vez que se corre el programa
-  //srand (time(NULL));
   encuesta->Atencion=rand()%10+1;
   encuesta->Calidad=rand()%10+1;
   encuesta->Justicia=rand()%10+1;
@@ -157,8 +162,7 @@ void inicializar_encuesta(aspectos *encuesta){
 
 //Esta funcion nos da un numero aleatorio de clientes entre el 10 y el 20.
 void inicializar_encuestados(restaurante *clientes){
-  //  srand (time(NULL));
-    //Como en la funcion rand empieza en 0 le sumamos 10 para que comience en 10..
+    //Como en la funcion rand empieza en 0 le sumamos 10 para que comience en 10.
     clientes->Numero_de_clientes=rand()%11+10;
 }
 
@@ -175,7 +179,7 @@ void inicializar_restaurante(restaurante *empieza, char *localidad){
     }
     //se hace el promedio de las encuestas.
     promediar_aspectos(empieza);
-    //se hace el promedio global.
+    //se hace el promedio global del restaurante.
     obtener_promedio_global(empieza);
 }
 
@@ -241,7 +245,7 @@ void obtener_promedio_global(restaurante *promedio){
   aux_promedio+=promedio->promedio.Musica;
   aux_promedio+=promedio->promedio.Iluminacion;
   aux_promedio+=promedio->promedio.Decoracion;
-  //  printf("Promedio antes de salir, duncion obtener promedio:%2.2f\n",aux_promedio );
+
     //Se divide la suma de los promedios entre el numero de aspectos que hay.
   promedio->nota_global=aux_promedio/7;
 }
@@ -423,6 +427,15 @@ void evaluacion_de_aspectos(aspectos *encuestas){
     vector[i][1]=i+1;
     i++;
   }while(i<7);
+  /*Tabla de referencia de aspectos
+           1=Atencion
+           2=Calidad
+           3=Justicia
+           4=Ambiente
+           5=Musica
+           6=Iluminacion
+           7=Decoracion                */
+
   //este ciclos imprimen a la variable vector desordenada.
   /*for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
@@ -443,6 +456,7 @@ grande esta al final del arreglo y el mas pequeño estas al principio*/
   //se coloca esa posicion porque es en donde esta el valor de mayor tamaño.
   // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
 int j=0;
+  // se coloco este while porque si salen aspectos con la misma calificacion, aparescan en pantalla
   while(vector[6-j][0]==vector[6][0]){
     switch ((int)(vector[6-j][1])) {
       case 1:
@@ -482,7 +496,9 @@ int j=0;
 
   char aspect2[20]="";
   int k=0;
+    // se coloco este while porque si salen aspectos con la misma calificacion, aparescan en pantalla
     while(vector[0+k][0]==vector[0][0]){
+      //este switch nos dara el numero de menor calificacion
       switch ((int)(vector[0+k][1])) {
 
             case 1:
@@ -510,11 +526,10 @@ int j=0;
               strcpy(aspect2,"");
               break;
           }
+          //en esta variable esta el de menor valor
           printf("El aspecto peor evaluado es: %s\n",aspect2 );
           k++;
   }
-  //en este esta el de menor valor
-  // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
 }
 
 void ordenar_promedios(float vector[][2],int numero_de_elementos){
@@ -545,11 +560,11 @@ void ordenar_promedios(float vector[][2],int numero_de_elementos){
         }
     }
 }
-
+//en esta funcion se coloca varios printf para poder visualizar todo los aspectos relacionados de un restaurante
 void imprimir_info_restaurante(restaurante *sucursal){
   restaurante b=*sucursal;
   printf("***************************************************************************************\n" );
-  printf("Localidad: %s || Clientes:%d || Nota Global: %5.2f\n",b.Localidad,b.Numero_de_clientes,b.nota_global );
+  printf("Localidad: %s || Clientes:%d || Nota Global: %5.3f\n",b.Localidad,b.Numero_de_clientes,b.nota_global );
   printf("\n" );
   printf("Atencion Promedio:\t%2.3f,\n",b.promedio.Atencion );
   printf("Calidad Promedio:\t%2.3f,\n",b.promedio.Calidad );
@@ -564,16 +579,19 @@ void imprimir_info_restaurante(restaurante *sucursal){
 }
 
 void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
+  //se crea la variable de tipo flotante
   float vector[numero_de_restaurantes][2];
+  //el ciclo es para llenar a los restaurantes con su nota global.
   for(int i=0;i<numero_de_restaurantes;i++){
     vector[i][0]=(sucursales+i)->nota_global;
     vector[i][1]=i+1;
   }
-
+  //se ordenan las notas globales de los restaurantes de menor a mayor.
   ordenar_promedios(vector,numero_de_restaurantes);
 
   char aspect[20]="";
   int j=0;
+  // se hace lo mismo que en la funcion evaluacion_de_aspectos.
     while(vector[numero_de_restaurantes-1-j][0]==vector[numero_de_restaurantes-1][0]&&j<numero_de_restaurantes){
       switch ((int)(vector[numero_de_restaurantes-1-j][1])) {
 
@@ -585,6 +603,12 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
               break;
             case 3:
               strcpy(aspect,"Canada");
+              break;
+            case 4:
+                strcpy(aspect,"Rusia");
+                break;
+            case 5:
+              strcpy(aspect,"China");
               break;
             default:
               strcpy(aspect,"");
@@ -608,6 +632,12 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
             case 3:
               strcpy(aspect2,"Canada");
               break;
+            case 4:
+                strcpy(aspect,"Rusia");
+                break;
+            case 5:
+              strcpy(aspect,"China");
+              break;
             default:
               strcpy(aspect2,"");
               break;
@@ -617,9 +647,12 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
   }
 
   int h=0;
+  //este ciclo es para poder imprimir las localidades y las notas globales de todos los restaurantes
   while(h<numero_de_restaurantes){
     printf("Localidad:%s - Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
+    //se incrementa sucursales para poder movernos entre los restaurantes y se puedan imprimir todos.
     sucursales++;
+    //h es la variable de control, de impresiones.
     h++;
   }
 }
