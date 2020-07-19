@@ -4,11 +4,14 @@ Descripcion: Examen Extraordinario.*/
 /////////////////////////
 //Librerias
 /////////////////////////
+//stdio es para las funciones de entrada y salida.
 #include <stdio.h>
+//stdlib es para srand, rand y en ocaciones system
 #include <stdlib.h>
+//Funiones para manejar el tiempo.
 #include <time.h>
+//string maneja funciones de cadenas de caracteres.
 #include <string.h>
-#include <stdint.h>
 /////////////////////////
 //Definiciones
 /////////////////////////
