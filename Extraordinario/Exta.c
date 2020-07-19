@@ -4,11 +4,11 @@ Descripcion: Examen Extraordinario.*/
 /////////////////////////
 //Librerias
 /////////////////////////
-/*#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <stdint.h>*/
+#include <stdint.h>
 /////////////////////////
 //Definiciones
 /////////////////////////
@@ -46,6 +46,7 @@ void obtener_promedio_global(restaurante *promedio);
 void Histograma(aspectos *encuestas,int numero_de_encuestas);
 void evaluacion_de_aspecto(aspectos *encuestas);
 void ordenar_promedios(float vector[7][2]);
+
 /////////////////////////
 //Funcion Principal
 /////////////////////////
@@ -373,6 +374,7 @@ grande esta al final del arreglo y el mas pequeño estas al principio*/
   //se hace un string en la condicion porque el valor de vector es flotante.
   //se coloca esa posicion porque es en donde esta el valor de mayor tamaño.
   // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
+  for(int i=0;i<(int)(vector[6][1]);i++){
   switch ((int)(vector[6][1])) {
     case 1:
     //se usa la funcion strcpy para remplazar el arreglo nulo con el contenido entre comillas.
@@ -400,39 +402,50 @@ grande esta al final del arreglo y el mas pequeño estas al principio*/
       strcpy(aspect,"");
       break;
   }
-  printf("El aspecto mejor evaluado es: %s\n",aspect );
+
+}
+printf("El aspecto mejor evaluado es: %s\n",aspect );
 
   char aspect2[20]="";
+  switch ((int)(vector[0][1])) {
+
+        case 1:
+            strcpy(aspect2,"Antencion");
+            break;
+        case 2:
+          strcpy(aspect2,"Calidad");
+          break;
+        case 3:
+          strcpy(aspect2,"Justicia");
+          break;
+        case 4:
+          strcpy(aspect2,"Ambiente");
+          break;
+        case 5:
+          strcpy(aspect2,"Musica");
+          break;
+        case 6:
+          strcpy(aspect2,"Iluminacion");
+          break;
+        case 7:
+          strcpy(aspect2,"Decoracion");
+          break;
+        default:
+          strcpy(aspect2,"");
+          break;
+      }
+
+
+
+printf("El aspecto peor evaluado es: %s\n\n",aspect2 );
+}
+
+
   //en este esta el de menor valor
   // el switch lo que va a hacer es buscar la posicion que tiene el aspecto y es el que va a dar.
-  switch ((int)(vector[0][1])) {
-    case 1:
-      strcpy(aspect2,"Antencion");
-      break;
-    case 2:
-      strcpy(aspect2,"Calidad");
-      break;
-    case 3:
-      strcpy(aspect2,"Justicia");
-      break;
-    case 4:
-      strcpy(aspect2,"Ambiente");
-      break;
-    case 5:
-      strcpy(aspect2,"Musica");
-      break;
-    case 6:
-      strcpy(aspect2,"Iluminacion");
-      break;
-    case 7:
-      strcpy(aspect2,"Decoracion");
-      break;
-    default:
-      strcpy(aspect2,"");
-      break;
-  }
-  printf("El aspecto peor evaluado es: %s\n\n",aspect2 );
-}
+
+
+
 void ordenar_promedios(float vector[7][2]){
     int iteracion = 0;
     char permutation = 1;
