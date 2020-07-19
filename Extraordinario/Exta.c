@@ -59,9 +59,9 @@ void evaluar_restaurantes(restaurante *sucursales,int numero_de_restaurantes);
 /////////////////////////
 int main(){
   srand (time(NULL));
-  restaurante sucursales[3];
-  cadena localidades[3]={"Mexico","Estados Unidos","Canada"};
-  for(int i=0;i<3;i++){
+  restaurante sucursales[5];
+  cadena localidades[5]={"Mexico","Estados Unidos","Canada","Rusia","China"};
+  for(int i=0;i<5;i++){
     inicializar_restaurante(&sucursales[i],localidades[i].cadena);
   }
 
@@ -72,15 +72,15 @@ int main(){
   while(opc!=3){
     printf("Escoge una opcion:\n");
     printf("1. Informacion general de los restaurantes\n" );
-    printf("2. Informacion de restaurante\n" );
+    printf("2. Informacion detallada de cada restaurante\n" );
     printf("3. Salir\n" );
     scanf("%d",&opc );
     switch (opc) {
       case 1:
         system("cls");
-        evaluar_restaurantes(sucursales,3);
+        evaluar_restaurantes(sucursales,5);
         printf("\n" );
-        printf("Presiona presione enter para continuar...\n" );
+        printf("Presiona enter para continuar...\n" );
         fflush(stdin);
         scanf("%c",&opc3 );
         system("cls");
@@ -88,18 +88,20 @@ int main(){
 
       case 2:
         system("cls");
-        printf("Escoge el restaurante que quieres la informacion:\n" );
-        printf("1. México\n" );
+        printf("Escoge el restaurante del que quieres la informacion:\n" );
+        printf("1. Mexico\n" );
         printf("2. Estados Unidos\n" );
         printf("3. Canada\n" );
-        printf("4. Regresar al menu anterior\n" );
+        printf("4. Rusia\n" );
+        printf("5. China\n" );
+        printf("6. Regresar al menu anterior\n" );
         scanf("%d",&opc2 );
         switch (opc2) {
           case 1:
             system("cls");
             imprimir_info_restaurante(&sucursales[0]);
             printf("\n" );
-            printf("Presiona presione enter para continuar...\n" );
+            printf("Presiona enter para continuar...\n" );
             fflush(stdin);
             scanf("%c",&opc3 );
             system("cls");
@@ -109,7 +111,7 @@ int main(){
             system("cls");
             imprimir_info_restaurante(&sucursales[1]);
             printf("\n" );
-            printf("Presiona presione enter para continuar...\n" );
+            printf("Presiona enter para continuar...\n" );
             fflush(stdin);
             scanf("%c",&opc3 );
             system("cls");
@@ -119,19 +121,41 @@ int main(){
             system("cls");
             imprimir_info_restaurante(&sucursales[2]);
             printf("\n" );
-            printf("Presiona presione enter para continuar...\n" );
+            printf("Presiona enter para continuar...\n" );
             fflush(stdin);
             scanf("%c",&opc3 );
             system("cls");
             break;
+
           case 4:
             system("cls");
+            imprimir_info_restaurante(&sucursales[3]);
+            printf("\n" );
+            printf("Presiona enter para continuar...\n" );
+            fflush(stdin);
+            scanf("%c",&opc3 );
+            system("cls");
             break;
+
+          case 5:
+            system("cls");
+            imprimir_info_restaurante(&sucursales[4]);
+            printf("\n" );
+            printf("Presiona enter para continuar...\n" );
+            fflush(stdin);
+            scanf("%c",&opc3 );
+            system("cls");
+            break;
+          case 6:
+            system("cls");
+            break;
+
           default:
             break;
         }
       case 3:
         break;
+
       default:
         break;
     }
@@ -424,16 +448,16 @@ void evaluacion_de_aspectos(aspectos *encuestas){
     i++;
   }while(i<7);
   //este ciclos imprimen a la variable vector desordenada.
-  /*for(int i=0;i<7;i++){
+  for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}*/
+}
   printf("\n" );
 //esta funicion ordena los valores de menor a mayor.x
   ordenar_promedios(vector,7);
   //este ciclos imprimen a la variable vector ordenada..
-  /*for(int i=0;i<7;i++){
+  for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}*/
+}
 
 /*Despues de ordenarlos nos damos cuenta que el valor mas
 grande esta al final del arreglo y el mas pequeño estas al principio*/
@@ -533,8 +557,8 @@ void ordenar_promedios(float vector[][2],int numero_de_elementos){
                 permutation = 1;
                 // Intercambiamos los dos elementos
                 // temp es una variable auxiliar.
-                int temp2= vector[actual][1];
-                int temp = vector[actual][0];
+                float temp2= vector[actual][1];
+                float temp = vector[actual][0];
                 //aqui se hace el intercambio de lugar
                 vector[actual][0] = vector[actual+1][0];
                 vector[actual+1][0] = temp;
@@ -569,8 +593,15 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
     vector[i][0]=(sucursales+i)->nota_global;
     vector[i][1]=i+1;
   }
-
+  for(int i=0;i<5;i++){
+  printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
+  }
   ordenar_promedios(vector,numero_de_restaurantes);
+
+  printf("Valores ordenados\n" );
+  for(int i=0;i<5;i++){
+  printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
+  }
 
   char aspect[20]="";
   int j=0;
@@ -586,6 +617,12 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
             case 3:
               strcpy(aspect,"Canada");
               break;
+            case 4:
+              strcpy(aspect,"Rusia");
+              break;
+            case 5:
+              strcpy(aspect,"China");
+              break;
             default:
               strcpy(aspect,"");
               break;
@@ -600,13 +637,19 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
       switch ((int)(vector[0+k][1])) {
 
             case 1:
-                strcpy(aspect2,"Mexico");
-                break;
+              strcpy(aspect2,"Mexico");
+              break;
             case 2:
               strcpy(aspect2,"Estados Unidos");
               break;
             case 3:
               strcpy(aspect2,"Canada");
+              break;
+            case 4:
+              strcpy(aspect2,"Rusia");
+              break;
+            case 5:
+              strcpy(aspect2,"China");
               break;
             default:
               strcpy(aspect2,"");
@@ -615,10 +658,11 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
           printf("El restaurante peor evaluado es:%s\n",aspect2 );
           k++;
   }
-
+  //se coloca este printf para que separe las calificaciones de los mejores restaurantes.
+  printf("*********************************************\n" );
   int h=0;
   while(h<numero_de_restaurantes){
-    printf("Localidad:%s - Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
+    printf("Localidad:%s || Calificacion:%2.2f\n",sucursales->Localidad,sucursales->nota_global );
     sucursales++;
     h++;
   }
