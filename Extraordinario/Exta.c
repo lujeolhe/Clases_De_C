@@ -457,16 +457,16 @@ void evaluacion_de_aspectos(aspectos *encuestas){
            7=Decoracion                */
 
   //este ciclos imprimen a la variable vector desordenada.
-  for(int i=0;i<7;i++){
+  /*for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}
+}*/
   printf("\n" );
 //esta funicion ordena los valores de menor a mayor.x
   ordenar_promedios(vector,7);
   //este ciclos imprimen a la variable vector ordenada..
-  for(int i=0;i<7;i++){
+  /*for(int i=0;i<7;i++){
   printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-}
+}*/
 
 /*Despues de ordenarlos nos damos cuenta que el valor mas
 grande esta al final del arreglo y el mas pequeño estas al principio*/
@@ -586,13 +586,13 @@ void imprimir_info_restaurante(restaurante *sucursal){
   printf("***************************************************************************************\n" );
   printf("Localidad: %s || Clientes:%d || Nota Global: %5.3f\n",b.Localidad,b.Numero_de_clientes,b.nota_global );
   printf("\n" );
-  printf("Atencion Promedio:\t%2.3f,\n",b.promedio.Atencion );
-  printf("Calidad Promedio:\t%2.3f,\n",b.promedio.Calidad );
-  printf("Justicia Promedio:\t%2.3f,\n",b.promedio.Justicia );
-  printf("Ambiente Promedio:\t%2.3f,\n",b.promedio.Ambiente );
-  printf("Musica Promedio:\t%2.3f,\n",b.promedio.Musica);
-  printf("Iluminacion Promedio:\t%2.3f,\n",b.promedio.Iluminacion );
-  printf("Decoracion Promedio:\t%2.3f,\n",b.promedio.Decoracion );
+  printf("Atencion Promedio:\t%2.3f\n",b.promedio.Atencion );
+  printf("Calidad Promedio:\t%2.3f\n",b.promedio.Calidad );
+  printf("Justicia Promedio:\t%2.3f\n",b.promedio.Justicia );
+  printf("Ambiente Promedio:\t%2.3f\n",b.promedio.Ambiente );
+  printf("Musica Promedio:\t%2.3f\n",b.promedio.Musica);
+  printf("Iluminacion Promedio:\t%2.3f\n",b.promedio.Iluminacion );
+  printf("Decoracion Promedio:\t%2.3f\n",b.promedio.Decoracion );
   evaluacion_de_aspectos(&b.promedio);
   printf("\n" );
   Histograma(b.encuestas,b.Numero_de_clientes);
@@ -606,15 +606,8 @@ void evaluar_restaurantes(restaurante *sucursales, int numero_de_restaurantes){
     vector[i][0]=(sucursales+i)->nota_global;
     vector[i][1]=i+1;
   }
-  for(int i=0;i<5;i++){
-  printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-  }
-  ordenar_promedios(vector,numero_de_restaurantes);
 
-  printf("Valores ordenados\n" );
-  for(int i=0;i<5;i++){
-  printf("%2.0f %2.2f\n",vector[i][1],vector[i][0] );
-  }
+  ordenar_promedios(vector,numero_de_restaurantes);
 
   char aspect[20]="";
   int j=0;
