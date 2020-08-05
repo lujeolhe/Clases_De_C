@@ -1,0 +1,28 @@
+////////////////////////
+//Librerias
+/////////////////////////
+#include <stdio.h>
+/////////////////////////
+//Definiciones
+/////////////////////////
+
+/////////////////////////
+//Estructuras
+/////////////////////////
+
+/////////////////////////
+//Declaracion de Funciones
+/////////////////////////
+
+/////////////////////////
+//Funcion Principal
+/////////////////////////
+int main(){
+  int n,m;
+  printf("Dame dos numeros de la forma a b\n" );
+  scanf("%d %d",&n,&m );
+
+  printf("La suma es:%d\n",n+m );
+  printf("La resta es:%d\n",n-m );
+  printf("La multiplicacion es:%d\n",n*m );
+}
