@@ -91,7 +91,7 @@ int main(){
     char f=0x80;
     unsigned char j=0x80;
      int8_t t=-1;
-     int g=0x01EF;
+     int g=495;
     fwrite(&f,sizeof(char),1,archivoEjemplo);
     fwrite(&j,sizeof(unsigned char),1,archivoEjemplo);
     fwrite(&t,sizeof(int8_t),1,archivoEjemplo);
