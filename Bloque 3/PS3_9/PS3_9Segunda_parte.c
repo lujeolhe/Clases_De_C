@@ -7,7 +7,7 @@
 /////////////////////////
 //Definiciones
 /////////////////////////
-#define tam_max 500
+#define tam_max 100
 #define dias 30
 /////////////////////////
 //Estructuras
@@ -32,7 +32,6 @@ int promedio_anual(int n){
   int mes[tam_max],aux_nort[tam_max],aux_cen[tam_max],aux_sur[tam_max],aux_gol[tam_max],aux_pac[tam_max],aux_car[tam_max];
   int prom_anual=0,prom_anual1=0,prom_anual2=0,prom_anual3=0,prom_anual4=0,prom_anual5=0;
   int aux_orden=0;
-  char meses[tam_max]={"Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre"};
   for(int i=0;i<dias;i++){
     aux_nort[i]=0;
   }
@@ -51,7 +50,6 @@ int promedio_anual(int n){
   for(int i=0;i<dias;i++){
     aux_car[i]=0;
   }
-
   for(int i=0;i<dias;i++){
     mes[i]=0;
   }
