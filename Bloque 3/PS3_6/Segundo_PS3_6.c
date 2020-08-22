@@ -31,7 +31,7 @@ int main(){
     printf("Persona numero %d\n",i );
     sexo=rand()%2;
     printf("Sexo:");
-    printf("%d ",sexo );
+    printf("%c ", sexo?'H':'M' );
     edad=rand()%75+5;
     printf("Edad:");
     printf("%d ",edad );
@@ -58,7 +58,7 @@ int main(){
   }
 
   printf("El Promedio de peso en Hombres es: %d\n",aux_peso2/ cont_men);
-  printf("El Promedio de peso en Hombres es: %d\n",aux_altura2/ cont_men);
+  printf("El Promedio de altura en Hombres es: %d\n",aux_altura2/ cont_men);
   printf("El Promedio de peso en Mujeres es: %d\n",aux_peso/ cont_mu);
-  printf("El Promedio de peso en Mujeres es: %d\n",aux_altura/ cont_mu);
+  printf("El Promedio de altura en Mujeres es: %d\n",aux_altura/ cont_mu);
 }
