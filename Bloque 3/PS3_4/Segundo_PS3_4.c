@@ -38,7 +38,7 @@ int main(){
       cont_nulo++;
     }
   }
-  printf("\nSon %d numeros positivos\n",cont_posi );
+  printf("\n\nSon %d numeros positivos\n",cont_posi );
   printf("Son %d numeros negativos\n",cont_nega );
   printf("Son %d numeros nulos\n",cont_nulo );
 }
