@@ -23,16 +23,16 @@ int main(){
  scanf("%d",&n );
  printf("\n" );
  for(int j=1;j<=n;j++){
-   for(int i=1;i<=n;i++){
-     if(j>=i)
-     printf("%d ",i );
+   for(int i=1;i<=n&&j>=i;i++){
+     //if(j>=i)
+     printf("%d ",i%10 );
    }
    printf("\n" );
  }
  for(int j=n-1;j>=0;j--){
    for(int i=1;i<n;i++){
      if(j>=i)
-     printf("%d ",i );
+     printf("%d ",i%10 );
    }
    printf("\n" );
  }
