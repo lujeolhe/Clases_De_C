@@ -2,6 +2,7 @@
 //Librerias
 /////////////////////////
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 #include <time.h>
 /////////////////////////
@@ -28,26 +29,7 @@ int main(){
   printf("%d\n",voltea(n));
   return 0;
 }
-/*int voltea(int k){
-  int volteador=0;
-  int u=0,d=0,c=0,m=0;
-  m=k/1000;
-  c=(k%1000)/100;
-  d=(k%100)/10;
-  u=k%10;
-  volteador=u*1000+d*100+c*10+m;
-  return volteador;
-}*/
-////////////////////////////
-//Optimizacion de la funcion mide
-////////////////////////////
-/*int mide(int n){
-  int contador=1, aux_div=n;
-  while((aux_div/=10)!=0)
-    contador++;
-    return contador;
-}*/
-//////////////////////////
+
 int potencia(int n,int m){
   int potencia=1;
   for(int i=1;i<=m;i++){
