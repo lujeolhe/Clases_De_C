@@ -1,0 +1,36 @@
+////////////////////////
+//Librerias
+/////////////////////////
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+/////////////////////////
+//Definiciones
+/////////////////////////
+
+/////////////////////////
+//Estructuras
+/////////////////////////
+
+/////////////////////////
+//Declaracion de Funciones
+/////////////////////////
+void palabras();
+/////////////////////////
+//Funcion Principal
+/////////////////////////
+int main(){
+  palabras();
+  return 0;
+}
+/////////////////////////
+//Funciones
+/////////////////////////
+void palabras(){
+  char*pCadena=(char *)malloc(20);
+  sprintf(pCadena,"Hola_Mundo");
+  for(int i=1;i<(int)strlen(pCadena);i+=2){
+    printf("%c ",*(pCadena+i));
+  }
+}
