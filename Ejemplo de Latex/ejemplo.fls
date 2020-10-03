@@ -147,11 +147,38 @@ INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wasysym\uw
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy10.tfm
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy10.tfm
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy7.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr12.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr8.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr6.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi8.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi6.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy8.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy6.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs5.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy10.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy8.tfm
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\wasy\wasy6.tfm
 OUTPUT ejemplo.pdf
 INPUT C:\Users\LuisJesús\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT ejemplo.aux
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-ec.enc
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr12.pfb
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr12.pfb
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr17.pfb
 INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr17.pfb
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr8.pfb
+INPUT C:\Users\LuisJesús\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmr8.pfb
