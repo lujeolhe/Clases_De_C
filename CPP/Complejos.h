@@ -36,16 +36,28 @@ namespace myNameSpace{
        *Constructor con parametros
        *********************/
    public:
-       Complejos(float a, float b){
+       Complejos(float a, int b){
              real=a;
              imag=b;
-             printf("Contructor con flotantes\n");
+             printf("Contructor con un foltante y un entero\n");
            }
+        /*********************
+        *Constructor con parametros
+        *********************/
+      public:
+        Complejos(float a,float b){
+          real=a;
+          imag=b;
+          printf("Contructor con flotantes\n");
+        }
        /*********************
        *Metodo para Obtener el modulo
        *********************/
        float modulo(){
            return sqrt(real*real+imag*imag);
+       }
+       float angulo(){
+         return atan(imag/real);
        }
        /*********************
        *Destructor base
@@ -62,6 +74,10 @@ namespace myNameSpace{
   //Sobre carga de Operadores//////////////
   Complejos operator +(Complejos a, Complejos b)  {
    Complejos temp = Complejos(a.real+b.real, a.imag+b.imag);
+   return temp;
+ }
+  Complejos operator *(Complejos a, Complejos b){
+   Complejos temp=Complejos(a.real*b.real,a.real*b.imag);
    return temp;
  }
 
