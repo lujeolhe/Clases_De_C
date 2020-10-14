@@ -72,12 +72,20 @@ namespace myNameSpace{
       float imag;
   };
   //Sobre carga de Operadores//////////////
-  Complejos operator +(Complejos a, Complejos b)  {
+  Complejos operator +(Complejos a, Complejos b){
    Complejos temp = Complejos(a.real+b.real, a.imag+b.imag);
    return temp;
  }
+ Complejos operator +(int a, Complejos b){
+  Complejos temp = Complejos(a+b.real,b.imag);
+  return temp;
+}
+Complejos operator +(Complejos a, int b){
+ Complejos temp = Complejos(a.real+b,a.imag);
+ return temp;
+}
   Complejos operator *(Complejos a, Complejos b){
-   Complejos temp=Complejos(a.real*b.real,a.real*b.imag);
+   Complejos temp=Complejos(a.real*b.real-b.imag*a.imag,a.real*b.imag+a.imag*b.real);
    return temp;
  }
 
