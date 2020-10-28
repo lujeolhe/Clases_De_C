@@ -1,3 +1,5 @@
+#ifndef MYNAMESPACE_AUTOMOVIL_H
+#define MYNAMESPACE_AUTOMOVIL_H
 #include<math.h>
 #include<stdio.h>
 #include <string.h>
@@ -102,5 +104,5 @@ namespace myNameSpace{
       int asientos;
   };
   //Sobre carga de Operadores//////////////
-
 }
+#endif

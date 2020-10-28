@@ -1,3 +1,5 @@
+#ifndef MYNAMESPACE_VEHICULOS_H
+#define MYNAMESPACE_VEHICULOS_H
 #include<math.h>
 #include<stdio.h>
 #include <string.h>
@@ -89,9 +91,7 @@ namespace myNameSpace{
       char motor[30];
   };
   //Sobre carga de Operadores//////////////
-
 }
+#endif
 //tarea
-//hacer clase moto
-//hacer metodos seters de automovil
-//Hacer los metodoss geters de las dos clases
+//todos lo metodos estaticos del problema 5 de la tarea 2

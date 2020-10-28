@@ -16,7 +16,12 @@ int main(){
   v2.setRuedas(4);
   printf("Vehiculo 2\n" );
   v2.ver_info();
-  Automovil a;
+  string b[]={"Luis" ,"Juanita" };
+  float c[]={1.5,9.4};
+  for(int i=0;i<2;i++){
+    cout<<""<<c[i]<<endl;
+  }
+  /*Automovil a;
   Automovil a2=Automovil("Automatico",1,4,4);
   Automovil a3=Automovil("Estandar",3,2,5,"Gris","Chebrolet",6,6,"Electrico");
   printf("\nAutomovil 1\n" );
@@ -25,7 +30,6 @@ int main(){
   a2.ver_info();
   printf("Automovil 3\n" );
   a3.ver_info();
-
   Motocicletas mot;
   Motocicletas mot2=Motocicletas(2);
   Motocicletas mot3=Motocicletas(2,"Gris","Audi",0,3,"Electrico");
@@ -59,5 +63,5 @@ int main(){
   printf("Automovil 4\n" );
   a4.ver_info();*/
 
-  printf("El color es: %s\n",a.getColor() );
+//  printf("El color es: %s\n",a.getColor() );
 }

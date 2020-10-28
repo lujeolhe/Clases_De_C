@@ -1,8 +1,10 @@
+#ifndef MYNAMESPACE_MOTOCICLETA_H
+#define MYNAMESPACE_MOTOCICLETA_H
+//Esto hace que no se accepten dos librerias del mismo nombre
 #include<math.h>
 #include<stdio.h>
 #include <string.h>
 #include"Vehiculos.h"
-#include"Automovil.h"
 namespace myNameSpace{
 //Clase///////////////////////
   class Motocicletas:public Vehiculos {
@@ -61,5 +63,5 @@ namespace myNameSpace{
       int cascos;
   };
   //Sobre carga de Operadores//////////////
-
 }
+#endif
