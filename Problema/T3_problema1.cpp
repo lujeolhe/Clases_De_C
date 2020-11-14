@@ -99,9 +99,9 @@ int main(){
   Transformador a;
   a.transformador(a);
   for(int i=0;i<5;i++){
-  char *c=a.ret_tipo()+10*i;
+  char *c=a.ret_tipo()+tam_max*i;
 
-  cout<<"Transformador "<<a.ret_tipo()+10*i<<": "<<endl;
+  cout<<"Transformador "<<c<<": "<<endl;
 }
   while(1){
     char b;
