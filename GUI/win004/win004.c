@@ -1,4 +1,5 @@
 #include <windows.h>//winapi o win32
+#include <windowsx.h>
 #include <stdio.h>
 
 #include "win004.h"
@@ -56,10 +57,12 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            NULL                 /* No hay datos de creaci�n de ventana */
     );
 
+    //ocultar la ventana de consola
+    //ShowWindow (GetConsoleWindow(), SW_HIDE);
     /* Mostrar la ventana */
-
     ShowWindow(hwnd, SW_SHOWDEFAULT);
     UpdateWindow(hwnd);
+
 
 
     /* Bucle de mensajes, se ejecuta hasta que haya error o GetMessage devuelva FALSE */
@@ -83,14 +86,22 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 {
     static HINSTANCE hInstance;
     static int veces;
-
-
+    static HWND hwndButton1;
+    static HWND hwndButton2;
+    static HWND hwndButton3;
+    static HWND hwndButton4;
+    char buffer[20];
+    int numero;
+    int suma=0;
+    char operacion;
     switch (msg)                  /* manipulador del mensaje */
     {
         case WM_CREATE:
            hInstance = ((LPCREATESTRUCT)lParam)->hInstance;
-           CreateWindowEx(0,"BUTTON","1",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,150,25,hwnd,(HMENU)BTN_EJEMPLO,hInstance,NULL);
-           CreateWindowEx(0,"BUTTON","2",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,45,150,25,hwnd,(HMENU)BTN_EJEMPLO2,hInstance,NULL);
+           hwndButton1=CreateWindowEx(0,"BUTTON","1",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,150,25,hwnd,(HMENU)BTN_EJEMPLO,hInstance,NULL);
+           hwndButton2=CreateWindowEx(0,"BUTTON","2",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,45,150,25,hwnd,(HMENU)BTN_EJEMPLO2,hInstance,NULL);
+           hwndButton3=CreateWindowEx(0,"BUTTON","0",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,80,150,25,hwnd,(HMENU)BTN_EJEMPLO3,hInstance,NULL);
+           hwndButton4=CreateWindowEx(0,"BUTTON","+",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 180,10,150,25,hwnd,(HMENU)BTN_EJEMPLO4,hInstance,NULL);
            return 0;
            break;
         case WM_COMMAND:
@@ -103,18 +114,67 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
                  DialogBoxParam(hInstance, "DialogoPrueba", hwnd, DlgProc2, veces);
                  break;
               case BTN_EJEMPLO:
-                MessageBox(HWND_DESKTOP,"Hola Mundo","Saludo", MB_OK);
-                estado=1;
-                break;
+                    //MessageBox(HWND_DESKTOP,"Hola Mundo","Saludo", MB_OK);
+
+                    Button_GetText(hwndButton1,/*manejador del boton*/
+                                    buffer,    /*buffer donde se va a guardar el texto*/
+                                    20);       /*tamanio max del buffer*/
+                    numero=atoi(buffer);
+                    numero++;
+                    printf("El texto es: %s\n",buffer );
+                    sprintf(buffer,"%d",numero);
+                    Button_SetText(hwndButton1,buffer);
+                    estado=1;
+                    break;
               case BTN_EJEMPLO2:
-                if(estado){
-                  MessageBox(HWND_DESKTOP,"Hola Mundo 2","Saludo", MB_OK);
-                }
-                else{
-                  MessageBox(HWND_DESKTOP,"Preciona primero en botón 1","Saludo", MB_OK);
-                }
+                    //MessageBox(HWND_DESKTOP,"Hola Mundo","Saludo", MB_OK);
+
+                    Button_GetText(hwndButton2,/*manejador del boton*/
+                                    buffer,    /*buffer donde se va a guardar el texto*/
+                                    20);       /*tamanio max del buffer*/
+                    numero=atoi(buffer);
+                    numero--;
+                    printf("El texto es: %s\n",buffer );
+                    sprintf(buffer,"%d",numero);
+                    Button_SetText(hwndButton2,buffer);
+
 
                 break;
+              case BTN_EJEMPLO3:
+                    Button_GetText(hwndButton4,/*manejador del boton*/
+                              buffer,    /*buffer donde se va a guardar el texto*/
+                              20);
+                    operacion=buffer[0];
+                    Button_GetText(hwndButton1,/*manejador del boton*/
+                              buffer,    /*buffer donde se va a guardar el texto*/
+                              20);
+                    numero=atoi(buffer);
+                    suma=numero;
+
+                    Button_GetText(hwndButton2,/*manejador del boton*/
+                              buffer,    /*buffer donde se va a guardar el texto*/
+                              20);
+                    numero=atoi(buffer);
+                    if(operacion=='+'){
+                      suma=suma+numero;
+                    }
+                    else
+                      suma=suma*numero;
+
+                    sprintf(buffer,"%d",suma);
+                    Button_SetText(hwndButton3,buffer);
+                    break;
+              case BTN_EJEMPLO4:
+                    Button_GetText(hwndButton4,/*manejador del boton*/
+                        buffer,    /*buffer donde se va a guardar el texto*/
+                        20);
+                    if(buffer[0]=='+'){
+                      Button_SetText(hwndButton4,"*");
+                    }
+                    else{
+                      Button_SetText(hwndButton4,"+");
+                    }
+
            }
            break;
         case WM_DESTROY:

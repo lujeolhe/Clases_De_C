@@ -7,3 +7,5 @@
 
 #define BTN_EJEMPLO  200
 #define BTN_EJEMPLO2 201
+#define BTN_EJEMPLO3 202
+#define BTN_EJEMPLO4 203
