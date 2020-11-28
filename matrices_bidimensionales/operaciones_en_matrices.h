@@ -15,7 +15,7 @@ void suma(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][va
 */
 
 void resta(int matriz[][valor_max], int matriz2[][valor_max],int matriztotal[][valor_max],int tam_renglon,int tam_columna);
-/*Funcion Suma:
+/*Funcion Resta:
 *Descripcion: Suma dos matrices bidimencionales.
 *Parametros: matriztotal=matriz1-matriz2, tambien se requieren los tamaños de las matrices a sumar, almacenando en Las
 *             variables tam_renglon y tam_columna.

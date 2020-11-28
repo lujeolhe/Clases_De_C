@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proyecto: Ejemplo de latex
+%Colaboradores: Ljoh
+%Fecha: 26 sep 2020
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%================================================================
+%				Tipo de documeto
+%================================================================
+\documentclass[12pt]{article}
+%10pt,12pt twocolumns
+%================================================================
+%					Preambulo
+%================================================================
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,activeacute]{babel}
+
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx, makecell}
+
+\usepackage{mathtools}
+\usepackage{amssymb, amsmath, amsbsy} % simbolitos
+%\usepackage{upgreek} % para poner letras griegas sin cursiva
+\usepackage{cancel} % para tachar
+\usepackage{mathdots} % para el comando \iddots
+\usepackage{mathrsfs} % para formato de letra
+\usepackage{stackrel} % para el comando \stackbin
+\usepackage{multirow} % para las tablas
+%\usepackage[fleqn]{amsmath}
+\usepackage{nccmath}
+
+\usepackage{wasysym}
+
+\usepackage[usenames]{color}
+%================================================================
+%					Comandos
+%================================================================
+\definecolor{ColorRespuesta}{RGB}{12,79,182}
+\newcommand{\Respuesta}[1]{\textcolor{ColorRespuesta}{#1}}
+
+%================================================================
+%					Margenes
+%================================================================
+\setlength{\textwidth}{170mm}%Ancho de Texto
+\setlength{\textheight}{230mm}%Largo del Texto
+\setlength{\oddsidemargin}{-5mm}%Margen de pagunas impares
+\setlength{\evensidemargin}{5mm}%Margen de páginas pares
+								%-para documentos tipo book-
+\setlength{\topmargin}{-20mm}%Margeb Superior
+
+%================================================================
+%				  Datos del Autor
+%================================================================
+\title{Capitulo A}
+\author{Luis J Olguín}
+\date{\today}
+%================================================================
+%					Documento
+%================================================================
+
+\begin{document}
+	\maketitle
+	Hla que tal
+	$ x^2_1=0$
+    %Casos de uso de Inicio de Sesión
+
+\end{document}

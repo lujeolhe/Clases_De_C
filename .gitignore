@@ -1,3 +1,4 @@
 #importante no incluir los archivos ejecutables en git
 *.exe
 *.gch
+*~

@@ -1,0 +1,56 @@
+#include<math.h>
+#include<stdio.h>
+namespace myNameSpace{
+//Clase///////////////////////
+  class Automovil{
+
+    //Métodos/////////////////
+	  public:
+       /*********************
+       *Constructor base
+       *********************/
+       Automovil(){
+
+           printf("Contructor por defecto\n");
+        }
+       /*********************
+       *Constructor con parametros
+       *********************/
+
+
+       /*********************
+       *Constructor con parametros
+       *********************/
+   public:
+
+       /*********************
+       *Constructor con parametros
+       *********************/
+   public:
+
+        /*********************
+        *Constructor con parametros
+        *********************/
+      public:
+
+       /*********************
+       *Metodo para Obtener el modulo
+       *********************/
+
+       /*********************
+       *Destructor base
+       *********************/
+  public:
+	     ~Automovil(){
+         printf("Complejo borrado\n");
+       }
+   //Atributos///////////////
+    public:
+      char aireAcondicionado;
+      int bolsasAire;
+      int puertas;
+      int asientos;
+  };
+  //Sobre carga de Operadores//////////////
+
+}
