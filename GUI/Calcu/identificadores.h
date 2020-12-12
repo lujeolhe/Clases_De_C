@@ -20,3 +20,6 @@
 #define BTN_operacion_multi  212
 #define BTN_operacion_division 213
 #define BTN_resultado 214
+#define BTN_c 215
+#define BTN_ce 216
+#define BTN_ans 217
