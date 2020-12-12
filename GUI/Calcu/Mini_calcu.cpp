@@ -340,4 +340,3 @@ void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bo
   strcat(pantalla,ansb);//es para concatenar
   Button_SetText(hwndButton_resu,pantalla);
 }
-//cuando me de el resultado lo pueda seguir modificando.
