@@ -21,9 +21,14 @@ namespace WIN32{
       this->largo=largo;
       this->ancho=ancho;
     }
+
+    int get_largo(){
+      return largo;
+    }
+    int get_ancho(){
+      return ancho;
+    }
   };
-
-
   class Punto{
   private:
     int x;
@@ -34,11 +39,17 @@ namespace WIN32{
       y=0;
     }
     Punto(int x, int y ){
+      //this es apuntador a la propia clase
       this->x=x;
       this->y=y;
     }
+    int get_x(){
+      return x;
+    }
+    int get_y(){
+      return y;
+    }
   };
-
   class Boton{
     //Atributos///////////////
     private:
@@ -60,7 +71,7 @@ namespace WIN32{
          tamanio=Rectangulo(20,20);
          strcpy(texto,"Boton");
          hwndButton=NULL;
-              }
+        }
        /*********************
        *Constructor con parametros
        *********************/
@@ -73,9 +84,11 @@ namespace WIN32{
          id_btn=id_Botones+num_Boton;
          num_Boton++;
         }
+        //Boton a(Rectangulo(25,25),"OKEY",Punto(10,10),hwndButton);
+        virtual void pushAction();
+        void crearBoton(HWND hwnd,HINSTANCE hInstance){
+          hwndButton=CreateWindowEx(0,"BUTTON",texto,BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, posicion.get_x(),posicion.get_y(),tamanio.get_largo(),tamanio.get_ancho(),hwnd,(HMENU)id_Botones,hInstance,NULL);
+        }
   };
-
-
-
 }
 #endif

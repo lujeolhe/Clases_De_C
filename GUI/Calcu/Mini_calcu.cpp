@@ -93,10 +93,9 @@ void bot_opera(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bo
 void boton_ce(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6]);
 void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],char boton[6],int *bandera,float *ans);
 void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera,float *ans);
-void valor_de_ans(float resultado,HWND hwndButton_ans);
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    static HINSTANCE hInstance;
+      static HINSTANCE hInstance;
     static int veces;
     static HWND hwndButton1;
     static HWND hwndButton2;
@@ -340,3 +339,4 @@ void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bo
   strcat(pantalla,ansb);//es para concatenar
   Button_SetText(hwndButton_resu,pantalla);
 }
+//Leer que es un metodo virtual o una clase virtual, metodo astracto o clase abstracta
