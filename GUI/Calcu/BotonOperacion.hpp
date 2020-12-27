@@ -5,6 +5,7 @@
 
 namespace WIN32{
   class BotonOperacion:public AmbitoBoton,public Boton{
+  public:
     void pushAction(){
       char operacion;
       if(get_bandera()){

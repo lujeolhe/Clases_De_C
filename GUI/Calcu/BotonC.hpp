@@ -5,6 +5,7 @@
 
 namespace WIN32{
   class BotonC:public AmbitoBoton,public Boton{
+    public:
     void pushAction(){
       sprintf(get_pantalla(),"");
       Button_SetText(get_hwndButton_resu(),get_pantalla());

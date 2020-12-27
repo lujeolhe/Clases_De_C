@@ -4,6 +4,8 @@
 
 namespace WIN32{
   class BotonNumeros:public AmbitoBoton,public Boton{
+  public:
+    BotonNumeros(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
     void pushAction(){
       if(get_bandera()){
         set_bandera(0);

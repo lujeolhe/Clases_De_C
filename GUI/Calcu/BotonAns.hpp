@@ -5,6 +5,7 @@
 
 namespace WIN32{
   class BotonAns:public AmbitoBoton,public Boton{
+    public:
     void pushAction(){
       char ansb[10];
       Button_GetText(get_hwndButton_resu(),get_pantalla(),50);

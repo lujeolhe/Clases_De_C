@@ -5,6 +5,7 @@
 
 namespace WIN32{
   class BotonResultado:public AmbitoBoton,public Boton{
+    public:
     void pushAction(){
       int num1,num2;
       char operacion;

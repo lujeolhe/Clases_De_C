@@ -90,5 +90,7 @@ namespace WIN32{
           hwndButton=CreateWindowEx(0,"BUTTON",texto,BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, posicion.get_x(),posicion.get_y(),tamanio.get_largo(),tamanio.get_ancho(),hwnd,(HMENU)id_Botones,hInstance,NULL);
         }
   };
+  //Sirve para definir tipos de datos
+  typedef Boton *ptrBoton;
 }
 #endif

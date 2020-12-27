@@ -5,6 +5,7 @@
 
 namespace WIN32{
   class BotonCE:public AmbitoBoton,public Boton{
+    public:
     void pushAction(){
       char operacion;
       char *p;
