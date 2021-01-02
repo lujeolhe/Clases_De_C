@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 //Vamos a crear un namespace llamado WIN32 porque estamos trabajando con WINAPI
-namespace WIN32{
+namespace WIN32API{
   class Rectangulo{
   private:
     int largo;
@@ -59,7 +59,8 @@ namespace WIN32{
     int id_btn;
     HWND hwndButton;
     //Constantes de Clase/////
-    static const int id_Botones=200;
+    static const int id_Botones=200;//solo las constantes estaticas se pueden inicializar
+    //los demas atributos se inicializar con un Constructor
     static int num_Boton;
     //Métodos/////////////////
     public:
@@ -67,7 +68,6 @@ namespace WIN32{
        *Constructor base
        *********************/
        Boton(){
-         num_Boton=0;
          tamanio=Rectangulo(20,20);
          strcpy(texto,"Boton");
          hwndButton=NULL;
@@ -76,7 +76,6 @@ namespace WIN32{
        *Constructor con parametros
        *********************/
        Boton(Rectangulo R, char *texto, Punto posicion, HWND hwndButton){
-         num_Boton=0;
          this->tamanio=R;
          strcpy(this->texto,texto);
          this->posicion=posicion;
@@ -85,11 +84,19 @@ namespace WIN32{
          num_Boton++;
         }
         //Boton a(Rectangulo(25,25),"OKEY",Punto(10,10),hwndButton);
-        virtual void pushAction();
+        virtual void pushAction()=0;//esto para que la responsabilidad del metodo caiga en las hijas
         void crearBoton(HWND hwnd,HINSTANCE hInstance){
-          hwndButton=CreateWindowEx(0,"BUTTON",texto,BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, posicion.get_x(),posicion.get_y(),tamanio.get_largo(),tamanio.get_ancho(),hwnd,(HMENU)id_Botones,hInstance,NULL);
+          hwndButton=CreateWindowEx(0,"BUTTON",texto,BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, posicion.get_x(),posicion.get_y(),tamanio.get_largo(),tamanio.get_ancho(),hwnd,(HMENU)id_btn,hInstance,NULL);
+        }
+        int get_id_btn(){
+          return id_btn;
+        }
+        HWND get_hwndButton(){
+          return hwndButton;
         }
   };
+  //referencia manual, se crea el vinculo entre el atributo y los objetos
+  int Boton::num_Boton=0;
   //Sirve para definir tipos de datos
   typedef Boton *ptrBoton;
 }

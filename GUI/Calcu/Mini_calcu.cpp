@@ -14,16 +14,19 @@
 #include "BotonC.hpp"
 #include "BotonCE.hpp"
 #include "BotonAns.hpp"
+using namespace WIN32API;
 int estado=0;
 //prototico
 void lector(HWND hwndButton,HWND hwndPantalla,char pantalla[50], char boton[6]);
 /*  Declaracion del procedimiento de ventana  */
+
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK DlgProc2(HWND, UINT, WPARAM, LPARAM);
 ////////////////////////////////////////////////////////////////////////////////
 //                Win MAIN
 ////////////////////////////////////////////////////////////////////////////////
+
 int WINAPI WinMain (HINSTANCE hThisInstance,
                     HINSTANCE hPrevInstance,
                     LPSTR lpszArgument,
@@ -101,17 +104,48 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 {
     static HINSTANCE hInstance;
     static ptrBoton ptrListaBotones[20];
+    AmbitoBoton ambi;
+      int boton_pulsado;
     switch (msg)                  /* manipulador del mensaje */
     {
         case WM_CREATE:
            hInstance = ((LPCREATESTRUCT)lParam)->hInstance;
            char numero[3];
            for(int i=0;i<3;i++){
+             sprintf(numero,"%d",1+i);
+             //new crea un boton con espacio de memoria aleatorio
+             ptrListaBotones[i]= new BotonNumeros(Rectangulo(25,25),numero,Punto(10+35*i,85),hwnd);
+             ptrListaBotones[i]->crearBoton(hwnd,hInstance);
+           }
+           for(int i=0;i<3;i++){
+             sprintf(numero,"%d",4+i);
+             //new crea un boton con espacio de memoria aleatorio
+             ptrListaBotones[i+3]= new BotonNumeros(Rectangulo(25,25),numero,Punto(10+35*i,120),hwnd);
+             ptrListaBotones[i+3]->crearBoton(hwnd,hInstance);
+           }
+           for(int i=0;i<3;i++){
              sprintf(numero,"%d",7+i);
              //new crea un boton con espacio de memoria aleatorio
-             ptrListaBotones[i]= new BotonNumeros(Rectangulo(25,25),numero,Punto(10+35*i,70),hwnd);
-
+             ptrListaBotones[i+6]= new BotonNumeros(Rectangulo(25,25),numero,Punto(10+35*i,155),hwnd);
+             ptrListaBotones[i+6]->crearBoton(hwnd,hInstance);
            }
+           ptrListaBotones[9]= new BotonResultado(Rectangulo(135,50),"",Punto(10,10),hwnd);
+           ptrListaBotones[9]->crearBoton(hwnd,hInstance);
+           for(int i=0;i<4;i++){
+             char operacion[4]={'+','-','*','/'};
+             sprintf(numero,"%c",operacion[i]);
+             //new crea un boton con espacio de memoria aleatorio
+             ptrListaBotones[i+10]= new BotonOperacion(Rectangulo(25,25),numero,Punto(115,85+35*i),hwnd);
+             ptrListaBotones[i+10]->crearBoton(hwnd,hInstance);
+           }
+           ptrListaBotones[14]= new BotonNumeros(Rectangulo(25,25),"0",Punto(45,190),hwnd);
+           ptrListaBotones[14]->crearBoton(hwnd,hInstance);
+           ptrListaBotones[15]= new BotonCE(Rectangulo(25,25),"CE",Punto(10,190),hwnd);
+           ptrListaBotones[15]->crearBoton(hwnd,hInstance);
+           ptrListaBotones[16]= new BotonC(Rectangulo(25,25),"C",Punto(80,190),hwnd);
+           ptrListaBotones[16]->crearBoton(hwnd,hInstance);
+           ambi.set_hwndButton_resu(ptrListaBotones[9]->get_hwndButton());
+           
            /*hwndButton_resu=CreateWindowEx(0,"BUTTON"," ",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,135,50,hwnd,(HMENU)BTN_resultado,hInstance,NULL);
            hwndButton7=CreateWindowEx(0,"BUTTON","7",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,70,25,25,hwnd,(HMENU)BTN_numero_7,hInstance,NULL);
            hwndButton8=CreateWindowEx(0,"BUTTON","8",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,70,25,25,hwnd,(HMENU)BTN_numero_8,hInstance,NULL);
@@ -134,8 +168,16 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            return 0;
            break;
         case WM_COMMAND:
+        boton_pulsado=(int)LOWORD(wParam);
            switch(LOWORD(wParam)){
 
+           }
+           for(int i=0;i<17;i++){
+           if(boton_pulsado==ptrListaBotones[i]->get_id_btn()){
+             printf("Encontre el boton correcto: %d\n",ptrListaBotones[i]->get_id_btn());
+             printf("El boton presionado fue: %d\n",(int)LOWORD(wParam) );
+             ptrListaBotones[i]->pushAction();
+             }
            }
            break;
 
@@ -179,3 +221,4 @@ BOOL CALLBACK DlgProc2(HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return FALSE;
 }
+//vtable error: de referencia en metodos virtuales

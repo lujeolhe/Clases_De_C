@@ -3,7 +3,7 @@
 
 #include "AmbitoBoton.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class BotonAns:public AmbitoBoton,public Boton{
     public:
     void pushAction(){

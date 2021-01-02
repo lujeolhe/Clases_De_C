@@ -3,9 +3,10 @@
 
 #include "AmbitoBoton.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class BotonOperacion:public AmbitoBoton,public Boton{
   public:
+    BotonOperacion(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
     void pushAction(){
       char operacion;
       if(get_bandera()){
@@ -34,5 +35,4 @@ namespace WIN32{
     }
   };
 };
-
 #endif

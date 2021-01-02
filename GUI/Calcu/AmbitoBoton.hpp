@@ -2,7 +2,7 @@
 #define WIN32_AMBITOBOTTON_H
 #include "Botones.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class AmbitoBoton{
     char pantalla[50];
     char boton[10];
@@ -43,10 +43,10 @@ namespace WIN32{
     AmbitoBoton(){
       strcpy(pantalla,"");
       strcpy(boton,"");
-      bandera=0;
-      ans=0;
-      hwndButton_resu=NULL;
     }
   };
+  int AmbitoBoton::bandera=0;
+  float AmbitoBoton::ans=0;
+  HWND AmbitoBoton::hwndButton_resu=NULL;
 };
 #endif

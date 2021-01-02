@@ -1,11 +1,12 @@
-#ifndef WIN32_BOTTONOPERACION_H
-#define WIN32_BOTTONOPERACION_H
+#ifndef WIN32_BOTTONRESULTADO_H
+#define WIN32_BOTTONRESULTADO_H
 
 #include "AmbitoBoton.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class BotonResultado:public AmbitoBoton,public Boton{
     public:
+      BotonResultado(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
     void pushAction(){
       int num1,num2;
       char operacion;

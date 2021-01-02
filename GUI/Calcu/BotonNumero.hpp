@@ -2,10 +2,12 @@
 #define WIN32_BOTTONNUMERO_H
 #include "AmbitoBoton.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class BotonNumeros:public AmbitoBoton,public Boton{
   public:
-    BotonNumeros(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
+    BotonNumeros(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){
+      //printf("Mi id es: %d\n",get_id_btn());
+    }
     void pushAction(){
       if(get_bandera()){
         set_bandera(0);

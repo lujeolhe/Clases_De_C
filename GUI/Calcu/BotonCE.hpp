@@ -3,9 +3,10 @@
 
 #include "AmbitoBoton.hpp"
 
-namespace WIN32{
+namespace WIN32API{
   class BotonCE:public AmbitoBoton,public Boton{
     public:
+      BotonCE(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
     void pushAction(){
       char operacion;
       char *p;
