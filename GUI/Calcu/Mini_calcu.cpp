@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <math.h>
 #include "identificadores.h"
 #include <string.h>
 int estado=0;
@@ -91,8 +92,9 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 void botones(HWND hwndButton_resu,HWND hwndButton0,char pantalla[50],char boton[6],int *bandera);
 void bot_opera(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera);
 void boton_ce(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6]);
-void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],char boton[6],int *bandera,float *ans);
+void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],char boton[6],int *bandera,float *ans,float *sen);
 void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera,float *ans);
+void boton_seno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *sen);
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
       static HINSTANCE hInstance;
@@ -115,15 +117,17 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
     static HWND hwndButton_c;
     static HWND hwndButton_ce;
     static HWND hwndButton_ans;
+    static HWND hwndButton_sen;
     char pantalla[50];
     char boton[6];
     static int bandera=0;//solo tine dos estados
     static float ans;
+    static float sen=0;
     switch (msg)                  /* manipulador del mensaje */
     {
         case WM_CREATE:
            hInstance = ((LPCREATESTRUCT)lParam)->hInstance;
-           hwndButton_resu=CreateWindowEx(0,"BUTTON"," ",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,135,50,hwnd,(HMENU)BTN_resultado,hInstance,NULL);
+           hwndButton_resu=CreateWindowEx(0,"BUTTON","",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,175,50,hwnd,(HMENU)BTN_resultado,hInstance,NULL);
            hwndButton7=CreateWindowEx(0,"BUTTON","7",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,70,25,25,hwnd,(HMENU)BTN_numero_7,hInstance,NULL);
            hwndButton8=CreateWindowEx(0,"BUTTON","8",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,70,25,25,hwnd,(HMENU)BTN_numero_8,hInstance,NULL);
            hwndButton9=CreateWindowEx(0,"BUTTON","9",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,70,25,25,hwnd,(HMENU)BTN_numero_9,hInstance,NULL);
@@ -141,6 +145,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            hwndButton_c=CreateWindowEx(0,"BUTTON","c",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,175,25,25,hwnd,(HMENU)BTN_c,hInstance,NULL);
            hwndButton_ce=CreateWindowEx(0,"BUTTON","ce",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,175,25,25,hwnd,(HMENU)BTN_ce,hInstance,NULL);
            hwndButton_ans=CreateWindowEx(0,"BUTTON","ans",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 150,175,25,25,hwnd,(HMENU)BTN_ans,hInstance,NULL);
+           hwndButton_sen=CreateWindowEx(0,"BUTTON","sin",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 150,140,25,25,hwnd,(HMENU)BTN_seno,hInstance,NULL);
            return 0;
            break;
         case WM_COMMAND:
@@ -188,7 +193,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
                 bot_opera(hwndButton_resu,hwndButton_div,pantalla,boton,&bandera);
                 break;
               case BTN_resultado:
-                bot_resultado(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&ans);
+                bot_resultado(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&ans,&sen);
                 break;
               case BTN_c:
                 sprintf(pantalla,"");
@@ -200,6 +205,9 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
               case BTN_ans:
                 boton_ans(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&ans);
                   break;
+              case BTN_seno:
+                boton_seno(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&sen);
+                break;
            }
            break;
 
@@ -292,7 +300,7 @@ void boton_ce(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bot
     Button_SetText(hwndButton_resu,pantalla);
   }
 }
-void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],char boton[6],int *bandera, float *ans){
+void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],char boton[6],int *bandera, float *ans, float *sen){
   int num1,num2;
   char operacion;
   float resultado;
@@ -327,6 +335,7 @@ void bot_resultado(HWND hwndButton_resu,HWND hwndButton_ans,char pantalla[50],ch
       break;
     }
     *ans=resultado;
+    *sen=sin(resultado);
     printf("Valor de resultado: %.0f\n",resultado );
     sprintf(pantalla,"%.0f",resultado);//funciona como printf, pero imprime en la cadenas
     Button_SetText(hwndButton_resu,pantalla);
@@ -339,4 +348,80 @@ void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bo
   strcat(pantalla,ansb);//es para concatenar
   Button_SetText(hwndButton_resu,pantalla);
 }
-//Leer que es un metodo virtual o una clase virtual, metodo astracto o clase abstracta
+void boton_seno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *sen){
+  char senob[10];
+  char operacion_aux;
+  int num,num1,num2;
+  char operacion;
+  float s;
+  int bandera_int=0;
+  Button_GetText(hwndButton_resu,pantalla,50);
+  printf("Tamanio de cadena: %d\n",strlen(pantalla));
+  for(int i=0;i<=strlen(pantalla);i++){
+    printf("%d",i );
+  }
+  printf("\n" );
+  for(int i=0;i<strlen(pantalla);i++){
+    printf("%c",pantalla[i] );
+  }
+  printf("_" );
+  printf("\n" );
+  printf("Valor de seno: %f\n",*sen);
+  for(int i=0;i<strlen(pantalla);i++){
+    if(pantalla[i]=='+'||pantalla[i]=='-'||pantalla[i]=='*'||pantalla[i]=='/'){
+      bandera_int=1;
+      break;
+    }
+  }
+  if(!(pantalla[strlen(pantalla)-1]=='+'||pantalla[strlen(pantalla)-1]=='-'||pantalla[strlen(pantalla)-1]=='*'||pantalla[strlen(pantalla)-1]=='/')&&bandera_int==1){
+    *bandera=1;
+    printf("Entre al ultimo if\n" );
+    sscanf(pantalla,"%d%c%d",&num1,&operacion,&num2);
+    printf("Valor de num1: %d\n",num1 );
+    printf("Valor de num2: %d\n",num2 );
+    printf("Valor de operacion: %c\n",operacion );
+    switch (operacion) {
+      case '+':
+        s=num1+num2;
+        break;
+      case '-':
+        s=num1-num2;
+      break;
+      case '*':
+        s=num1*num2;
+      break;
+      case '/':
+        s=num1/num2;
+      break;
+    }
+    *sen=s;
+    sprintf(senob,"%f",*sen);//funciona como printf, pero imprime en la cadenas
+    sprintf(pantalla,"%f",senob);//funciona como printf, pero imprime en la cadenas
+    strcat(pantalla,senob);//es para concatenar
+    Button_SetText(hwndButton_resu,pantalla);
+  }
+  operacion_aux=pantalla[strlen(pantalla)-1];
+  if(operacion_aux=='/'||operacion_aux=='+'||operacion_aux=='-'||operacion_aux=='*'){
+    *bandera=1;
+    pantalla[strlen(pantalla)-1]='\0';
+    pantalla[strlen(pantalla)-2]='\0';
+    sscanf(pantalla,"%d",&num);
+    printf("Valor de num: %d\n",num );
+    s=sin(num);
+    printf("Valor de seno: %f\n",s );
+    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
+    Button_SetText(hwndButton_resu,pantalla);
+
+  }
+  else {
+    *bandera=1;
+    sscanf(pantalla,"%d",&num);
+    printf("Valor de num: %d\n",num );
+    s=sin(num);
+    printf("Valor de seno: %f\n",s );
+    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
+    Button_SetText(hwndButton_resu,pantalla);
+  }
+}
+//stach-guarda nuestros cambios en un area segura
+//git branch <nombre-rama> <sha1-commit> -nueva rama con un commit

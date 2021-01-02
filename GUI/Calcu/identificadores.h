@@ -23,3 +23,4 @@
 #define BTN_c 215
 #define BTN_ce 216
 #define BTN_ans 217
+#define BTN_seno 218
