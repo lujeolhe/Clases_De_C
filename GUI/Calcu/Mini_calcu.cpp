@@ -145,7 +145,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            ptrListaBotones[16]= new BotonC(Rectangulo(25,25),"C",Punto(80,190),hwnd);
            ptrListaBotones[16]->crearBoton(hwnd,hInstance);
            ambi.set_hwndButton_resu(ptrListaBotones[9]->get_hwndButton());
-           
+
            /*hwndButton_resu=CreateWindowEx(0,"BUTTON"," ",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,135,50,hwnd,(HMENU)BTN_resultado,hInstance,NULL);
            hwndButton7=CreateWindowEx(0,"BUTTON","7",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,70,25,25,hwnd,(HMENU)BTN_numero_7,hInstance,NULL);
            hwndButton8=CreateWindowEx(0,"BUTTON","8",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,70,25,25,hwnd,(HMENU)BTN_numero_8,hInstance,NULL);
