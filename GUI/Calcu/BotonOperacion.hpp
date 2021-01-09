@@ -29,7 +29,7 @@ namespace WIN32API{
         Button_SetText(get_hwndButton_resu(),get_pantalla());
       }
       Button_GetText(get_hwndButton_resu(),get_pantalla(),50);
-      Button_GetText(get_hwndButton_resu(),get_boton(),6);//se lee el manejador
+      Button_GetText(get_hwndButton(),get_boton(),6);//se lee el manejador
       strcat(get_pantalla(),get_boton());//es para concatenar
       Button_SetText(get_hwndButton_resu(),get_pantalla());
     }
