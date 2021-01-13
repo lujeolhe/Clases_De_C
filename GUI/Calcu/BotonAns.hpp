@@ -6,6 +6,9 @@
 namespace WIN32API{
   class BotonAns:public AmbitoBoton,public Boton{
     public:
+      BotonAns(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){
+        //printf("Mi id es: %d\n",get_id_btn());
+      }
     void pushAction(){
       char ansb[10];
       Button_GetText(get_hwndButton_resu(),get_pantalla(),50);

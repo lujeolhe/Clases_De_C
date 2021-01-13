@@ -14,6 +14,7 @@
 #include "BotonC.hpp"
 #include "BotonCE.hpp"
 #include "BotonAns.hpp"
+#include "BotonTrigo.hpp"
 using namespace WIN32API;
 int estado=0;
 //prototico
@@ -103,9 +104,10 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     static HINSTANCE hInstance;
-    static ptrBoton ptrListaBotones[20];
+    static ptrBoton ptrListaBotones[30];
     AmbitoBoton ambi;
-      int boton_pulsado;
+    int boton_pulsado;
+    char *a[]={"sin","cos","tan"};
     switch (msg)                  /* manipulador del mensaje */
     {
         case WM_CREATE:
@@ -129,7 +131,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
              ptrListaBotones[i+6]= new BotonNumeros(Rectangulo(25,25),numero,Punto(10+35*i,155),hwnd);
              ptrListaBotones[i+6]->crearBoton(hwnd,hInstance);
            }
-           ptrListaBotones[9]= new BotonResultado(Rectangulo(135,50),"",Punto(10,10),hwnd);
+           ptrListaBotones[9]= new BotonResultado(Rectangulo(170,50),"",Punto(10,10),hwnd);
            ptrListaBotones[9]->crearBoton(hwnd,hInstance);
            for(int i=0;i<4;i++){
              char operacion[4]={'+','-','*','/'};
@@ -145,26 +147,12 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            ptrListaBotones[16]= new BotonC(Rectangulo(25,25),"C",Punto(80,190),hwnd);
            ptrListaBotones[16]->crearBoton(hwnd,hInstance);
            ambi.set_hwndButton_resu(ptrListaBotones[9]->get_hwndButton());
-
-           /*hwndButton_resu=CreateWindowEx(0,"BUTTON"," ",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,10,135,50,hwnd,(HMENU)BTN_resultado,hInstance,NULL);
-           hwndButton7=CreateWindowEx(0,"BUTTON","7",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,70,25,25,hwnd,(HMENU)BTN_numero_7,hInstance,NULL);
-           hwndButton8=CreateWindowEx(0,"BUTTON","8",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,70,25,25,hwnd,(HMENU)BTN_numero_8,hInstance,NULL);
-           hwndButton9=CreateWindowEx(0,"BUTTON","9",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,70,25,25,hwnd,(HMENU)BTN_numero_9,hInstance,NULL);
-           hwndButton_div=CreateWindowEx(0,"BUTTON","/",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 115,70,25,25,hwnd,(HMENU)BTN_operacion_division,hInstance,NULL);
-           hwndButton4=CreateWindowEx(0,"BUTTON","4",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,105,25,25,hwnd,(HMENU)BTN_numero_4,hInstance,NULL);
-           hwndButton5=CreateWindowEx(0,"BUTTON","5",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,105,25,25,hwnd,(HMENU)BTN_numero_5,hInstance,NULL);
-           hwndButton6=CreateWindowEx(0,"BUTTON","6",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,105,25,25,hwnd,(HMENU)BTN_numero_6,hInstance,NULL);
-           hwndButton_mul=CreateWindowEx(0,"BUTTON","*",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 115,105,25,25,hwnd,(HMENU)BTN_operacion_multi,hInstance,NULL);
-           hwndButton1=CreateWindowEx(0,"BUTTON","1",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,140,25,25,hwnd,(HMENU)BTN_numero_1,hInstance,NULL);
-           hwndButton2=CreateWindowEx(0,"BUTTON","2",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,140,25,25,hwnd,(HMENU)BTN_numero_2,hInstance,NULL);
-           hwndButton3=CreateWindowEx(0,"BUTTON","3",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,140,25,25,hwnd,(HMENU)BTN_numero_3,hInstance,NULL);
-           hwndButton_res=CreateWindowEx(0,"BUTTON","-",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 115,140,25,25,hwnd,(HMENU)BTN_operacion_resta,hInstance,NULL);
-           hwndButton0=CreateWindowEx(0,"BUTTON","0",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 45,175,25,25,hwnd,(HMENU)BTN_numero_0,hInstance,NULL);
-           hwndButton_suma=CreateWindowEx(0,"BUTTON","+",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 115,175,25,25,hwnd,(HMENU)BTN_operacion_suma,hInstance,NULL);
-           hwndButton_c=CreateWindowEx(0,"BUTTON","c",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 80,175,25,25,hwnd,(HMENU)BTN_c,hInstance,NULL);
-           hwndButton_ce=CreateWindowEx(0,"BUTTON","ce",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 10,175,25,25,hwnd,(HMENU)BTN_ce,hInstance,NULL);
-           hwndButton_ans=CreateWindowEx(0,"BUTTON","ans",BS_PUSHBUTTON|BS_CENTER|WS_CHILD|WS_VISIBLE, 150,175,25,25,hwnd,(HMENU)BTN_ans,hInstance,NULL);
-           */
+           for(int i=0;i<3;i++){
+             ptrListaBotones[i+17]= new BotonTrigo(Rectangulo(25,25),a[i],Punto(150,85+35*i),hwnd);
+             ptrListaBotones[i+17]->crearBoton(hwnd,hInstance);
+           }
+           ptrListaBotones[20]= new BotonAns(Rectangulo(25,25),"ans",Punto(150,190),hwnd);
+           ptrListaBotones[20]->crearBoton(hwnd,hInstance);
            return 0;
            break;
         case WM_COMMAND:
@@ -172,7 +160,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            switch(LOWORD(wParam)){
 
            }
-           for(int i=0;i<17;i++){
+           for(int i=0;i<21;i++){
            if(boton_pulsado==ptrListaBotones[i]->get_id_btn()){
              printf("Encontre el boton correcto: %d\n",ptrListaBotones[i]->get_id_btn());
              printf("El boton presionado fue: %d\n",(int)LOWORD(wParam) );
@@ -222,3 +210,5 @@ BOOL CALLBACK DlgProc2(HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
     return FALSE;
 }
 //vtable error: de referencia en metodos virtuales
+//investigar como crear menus y cajas de texto
+//Intentar llevar a las buenas practicas el de estructurada
