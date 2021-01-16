@@ -591,15 +591,13 @@ void boton_tangente(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],ch
   }
 }
 void InsertarMenu(HWND hWnd){
-   HMENU hMenu1, hMenu2,hMenu3, hMenu4;
+   HMENU hMenu1, hMenu2;
    hMenu1 = CreateMenu(); /* Manipulador de la barra de menú */
    hMenu2 = CreateMenu(); /* Manipulador para el primer menú pop-up */
-   hMenu4 = CreateMenu(); /* Manipulador para el primer menú pop-up */
    AppendMenu(hMenu2, MF_STRING, CM_PRUEBA, "&Trigonometricas"); /* 1º ítem */
    AppendMenu(hMenu2, MF_SEPARATOR, 0, NULL);           /* 2º ítem (separador) */
    AppendMenu(hMenu2, MF_STRING, CM_SALIR, "&Salir");   /* 3º ítem */
-
-
+   AppendMenu(hMenu2, MF_SEPARATOR, 0, NULL);  
    /* Inserción del menú pop-up */
    AppendMenu(hMenu1, MF_STRING | MF_POPUP, (UINT)hMenu2, "&Principal");
    SetMenu (hWnd, hMenu1);  /* Asigna el menú a la ventana hWnd */

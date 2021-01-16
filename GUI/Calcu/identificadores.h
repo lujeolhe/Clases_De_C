@@ -28,5 +28,3 @@
 #define BTN_tangente 220
 #define CM_PRUEBA 221
 #define CM_SALIR  222
-#define CM_PRUEBA2 223
-#define CM_SALIR2  224
