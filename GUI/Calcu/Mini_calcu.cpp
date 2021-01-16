@@ -13,6 +13,7 @@ void lector(HWND hwndButton,HWND hwndPantalla,char pantalla[50], char boton[6]);
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK DlgProc2(HWND, UINT, WPARAM, LPARAM);
+void InsertarMenu(HWND hWnd);
 ////////////////////////////////////////////////////////////////////////////////
 //                Win MAIN
 ////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +63,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     );
 
     /* Mostrar la ventana */
-
+    InsertarMenu(hwnd);
     ShowWindow(hwnd, SW_SHOWDEFAULT);
 
     //MessageBox(HWND_DESKTOP, /*Manejador del estritorio*/
@@ -97,6 +98,7 @@ void boton_ans(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char bo
 void boton_seno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *sen);
 void boton_coseno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *cose);
 void boton_tangente(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *tang);
+void aux_sen(char operacion_aux,HWND hwndButton_resu, char pantalla[50], int num, int *bandera,float s);
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
       static HINSTANCE hInstance;
@@ -222,6 +224,14 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
               case BTN_tangente:
                 boton_tangente(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&tang);
                 break;
+              case CM_PRUEBA:
+              MessageBox(hwnd, "Comando: Prueba", "Mensaje de menu", MB_OK);
+              break;
+              case CM_SALIR:
+              MessageBox(hwnd, "Comando: Salir", "Mensaje de menu", MB_YESNO);
+                 /* envía un mensaje WM_QUIT a la cola de mensajes */
+                 PostQuitMessage(0);
+              break;
            }
            break;
 
@@ -417,27 +427,7 @@ void boton_seno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char b
     Button_SetText(hwndButton_resu,pantalla);
   }
   operacion_aux=pantalla[strlen(pantalla)-1];
-  if(operacion_aux=='/'||operacion_aux=='+'||operacion_aux=='-'||operacion_aux=='*'){
-    *bandera=1;
-    pantalla[strlen(pantalla)-1]='\0';
-    pantalla[strlen(pantalla)-2]='\0';
-    sscanf(pantalla,"%d",&num);
-    printf("Valor de num: %d\n",num );
-    s=sin(num);
-    printf("Valor de seno: %f\n",s );
-    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
-    Button_SetText(hwndButton_resu,pantalla);
-
-  }
-  else {
-    *bandera=1;
-    sscanf(pantalla,"%d",&num);
-    printf("Valor de num: %d\n",num );
-    s=sin(num);
-    printf("Valor de seno: %f\n",s );
-    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
-    Button_SetText(hwndButton_resu,pantalla);
-  }
+  aux_sen(operacion_aux,hwndButton_resu,pantalla, num,bandera, s);
 }
 void boton_coseno(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],char boton[6], int *bandera, float *cose){
   char cosenob[10];
@@ -586,6 +576,46 @@ void boton_tangente(HWND hwndButton_resu,HWND hwndButtonNum,char pantalla[50],ch
     t=tan(num);
     printf("Valor de tangente: %f\n",t );
     sprintf(pantalla,"%f",t);//funciona como printf, pero imprime en la cadenas
+    Button_SetText(hwndButton_resu,pantalla);
+  }
+}
+void InsertarMenu(HWND hWnd){
+   HMENU hMenu1, hMenu2,hMenu3, hMenu4;
+   hMenu1 = CreateMenu(); /* Manipulador de la barra de menú */
+   hMenu2 = CreateMenu(); /* Manipulador para el primer menú pop-up */
+   hMenu4 = CreateMenu(); /* Manipulador para el primer menú pop-up */
+   AppendMenu(hMenu2, MF_STRING, CM_PRUEBA, "&Prueba"); /* 1º ítem */
+   AppendMenu(hMenu2, MF_SEPARATOR, 0, NULL);           /* 2º ítem (separador) */
+   AppendMenu(hMenu2, MF_STRING, CM_SALIR, "&Salir");   /* 3º ítem */
+
+   AppendMenu(hMenu4, MF_STRING, CM_PRUEBA2, "&Cientifica"); /* 1º ítem */
+   AppendMenu(hMenu4, MF_SEPARATOR, 0, NULL);           /* 2º ítem (separador) */
+   AppendMenu(hMenu4, MF_STRING, CM_SALIR2, "&Conversion");   /* 3º ítem */
+   /* Inserción del menú pop-up */
+   AppendMenu(hMenu1, MF_STRING | MF_POPUP, (UINT)hMenu2, "&Principal");
+   AppendMenu(hMenu1, MF_STRING | MF_POPUP, (UINT)hMenu4, "&Segundo");
+   SetMenu (hWnd, hMenu1);  /* Asigna el menú a la ventana hWnd */
+}
+void aux_sen(char operacion_aux,HWND hwndButton_resu, char pantalla[50], int num, int *bandera,float s){
+  if(operacion_aux=='/'||operacion_aux=='+'||operacion_aux=='-'||operacion_aux=='*'){
+    *bandera=1;
+    pantalla[strlen(pantalla)-1]='\0';
+    pantalla[strlen(pantalla)-2]='\0';
+    sscanf(pantalla,"%d",&num);
+    printf("Valor de num: %d\n",num );
+    s=sin(num);
+    printf("Valor de seno: %f\n",s );
+    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
+    Button_SetText(hwndButton_resu,pantalla);
+
+  }
+  else {
+    *bandera=1;
+    sscanf(pantalla,"%d",&num);
+    printf("Valor de num: %d\n",num );
+    s=sin(num);
+    printf("Valor de seno: %f\n",s );
+    sprintf(pantalla,"%f",s);//funciona como printf, pero imprime en la cadenas
     Button_SetText(hwndButton_resu,pantalla);
   }
 }
