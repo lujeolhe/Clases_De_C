@@ -225,12 +225,23 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
                 boton_tangente(hwndButton_resu,hwndButton_ans,pantalla,boton,&bandera,&tang);
                 break;
               case CM_PRUEBA:
-              MessageBox(hwnd, "Comando: Prueba", "Mensaje de menu", MB_OK);
+              if(IsWindowVisible (hwndButton_cose)){//Me dice si el boton esta visible
+                ShowWindow (hwndButton_cose, SW_HIDE);//Oculta los botones
+                ShowWindow (hwndButton_tang, SW_HIDE);
+                ShowWindow (hwndButton_sen, SW_HIDE);
+              }
+              else{
+                ShowWindow (hwndButton_cose, SW_SHOWNORMAL);//Mostrar los botones
+                ShowWindow (hwndButton_tang, SW_SHOWNORMAL);
+                ShowWindow (hwndButton_sen, SW_SHOWNORMAL);
+              }
               break;
               case CM_SALIR:
-              MessageBox(hwnd, "Comando: Salir", "Mensaje de menu", MB_YESNO);
-                 /* envía un mensaje WM_QUIT a la cola de mensajes */
-                 PostQuitMessage(0);
+              if(MessageBox(hwnd, "Comando: Salir", "Mensaje de menu", MB_YESNO)==6){
+                /* envía un mensaje WM_QUIT a la cola de mensajes */
+                PostQuitMessage(0);
+                printf("Me mori :(\n" );
+              }
               break;
            }
            break;
@@ -584,16 +595,13 @@ void InsertarMenu(HWND hWnd){
    hMenu1 = CreateMenu(); /* Manipulador de la barra de menú */
    hMenu2 = CreateMenu(); /* Manipulador para el primer menú pop-up */
    hMenu4 = CreateMenu(); /* Manipulador para el primer menú pop-up */
-   AppendMenu(hMenu2, MF_STRING, CM_PRUEBA, "&Prueba"); /* 1º ítem */
+   AppendMenu(hMenu2, MF_STRING, CM_PRUEBA, "&Trigonometricas"); /* 1º ítem */
    AppendMenu(hMenu2, MF_SEPARATOR, 0, NULL);           /* 2º ítem (separador) */
    AppendMenu(hMenu2, MF_STRING, CM_SALIR, "&Salir");   /* 3º ítem */
 
-   AppendMenu(hMenu4, MF_STRING, CM_PRUEBA2, "&Cientifica"); /* 1º ítem */
-   AppendMenu(hMenu4, MF_SEPARATOR, 0, NULL);           /* 2º ítem (separador) */
-   AppendMenu(hMenu4, MF_STRING, CM_SALIR2, "&Conversion");   /* 3º ítem */
+
    /* Inserción del menú pop-up */
    AppendMenu(hMenu1, MF_STRING | MF_POPUP, (UINT)hMenu2, "&Principal");
-   AppendMenu(hMenu1, MF_STRING | MF_POPUP, (UINT)hMenu4, "&Segundo");
    SetMenu (hWnd, hMenu1);  /* Asigna el menú a la ventana hWnd */
 }
 void aux_sen(char operacion_aux,HWND hwndButton_resu, char pantalla[50], int num, int *bandera,float s){
