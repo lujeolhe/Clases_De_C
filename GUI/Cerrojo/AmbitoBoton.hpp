@@ -63,13 +63,14 @@ namespace WIN32API{
     void set_hwndButton_panel(HWND hwndButton_a){
       hwndButton_panel=hwndButton_a;
     }
-    AmbitoBoton(){
-      
-      strcpy(pantalla,"");
-      strcpy(boton,"");
+    void generarNumerosAleatorios(){
       for(int i=0;i<10;i++){
         num_aleatorio[i]=rand()%10;
       }
+    }
+    AmbitoBoton(){
+      strcpy(pantalla,"");
+      strcpy(boton,"");
     }
   };
   int AmbitoBoton::bandera=0;
