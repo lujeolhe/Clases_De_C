@@ -10,14 +10,24 @@ namespace WIN32API{
     void pushAction(){
       srand(time(NULL));
       char num_aux[11];
+      generarNumerosAleatorios();
       int *aux=get_num_aleatorio();
+      /////////////////////////DEBUG
+      printf("Valor aux en panel Antes:");
       for(int i=0;i<10;i++){
-        printf("Valor aux en panel: %d\n",aux[i]);
+        printf(" %d,",aux[i]);
       }
+      printf("\n" );
+      /////////////////////////ENDDEBUG
       aleatorio(aux);
+      /////////////////////////DEBUG
+      printf("Valor aux en panel Despu:");
       for(int i=0;i<10;i++){
-        printf("Valor aux en panel depues de aleatorio: %d\n",aux[i]);
+        printf(" %d,",aux[i]);
       }
+      printf("\n" );
+      /////////////////////////ENDDEBUG
+
       for(int i=0;i<=get_num_botones();i++){
         printf("Valor aux en panel depues de aleatorio dentro del otro for: %d\n",aux[i]);
         printf("Numero botones: %d\n",get_num_botones() );
