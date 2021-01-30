@@ -10,6 +10,8 @@
 #include "AmbitoBoton.hpp"
 #include "BotonNumero.hpp"
 #include "BotonPanel.hpp"
+#include "BotonAsterisco.hpp"
+#include "BotonGato.hpp"
 using namespace WIN32API;
 int estado=0;
 //prototico
@@ -130,6 +132,10 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            ptrListaBotones[9]->crearBoton(hwnd,hInstance);
            ptrListaBotones[10]= new BotonPanel(Rectangulo(170,50),"",Punto(10,10),hwnd);
            ptrListaBotones[10]->crearBoton(hwnd,hInstance);
+           ptrListaBotones[11]= new BotonAsterisco(Rectangulo(25,25),"*",Punto(10,190),hwnd);
+           ptrListaBotones[11]->crearBoton(hwnd,hInstance);
+           ptrListaBotones[12]= new BotonGato(Rectangulo(25,25),"#",Punto(80,190),hwnd);
+           ptrListaBotones[12]->crearBoton(hwnd,hInstance);
            ambi.set_hwndButton_panel(ptrListaBotones[10]->get_hwndButton());
            ambi.set_num_botones(9);
            ambi.set_ptrLista(ptrListaBotones);
@@ -140,7 +146,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
            switch(LOWORD(wParam)){
 
            }
-           for(int i=0;i<11;i++){
+           for(int i=0;i<13;i++){
 
            if(boton_pulsado==ptrListaBotones[i]->get_id_btn()){
              p=ptrListaBotones[i]->get_texto();
