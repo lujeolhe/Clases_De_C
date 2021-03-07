@@ -34,6 +34,11 @@
 %\usepackage[fleqn]{amsmath}
 \usepackage{nccmath}
 
+%Circuitos
+%\usepackage{tikz}
+%\usepackage{circuitickz}
+
+
 \usepackage{wasysym}
 
 \usepackage[usenames]{color}
@@ -42,7 +47,7 @@
 %================================================================
 \definecolor{ColorRespuesta}{RGB}{12,79,182}
 \newcommand{\Respuesta}[1]{\textcolor{ColorRespuesta}{#1}}
-
+\newcommand{\derivada}[2]{\displaystyle{\frac{d#1}{d#2}}}
 %================================================================
 %					Margenes
 %================================================================
@@ -63,10 +68,20 @@
 %					Documento
 %================================================================
 
+
 \begin{document}
-	\maketitle
-	Hla que tal
-	$ x^2_1=0$
+
+\maketitle
+
+	Analisis del Circuito RC:
+
+	$V(t)=A\sin(\omega t)$
+
+	$V_C_1=\displaystyle{\frac{q(t)}{C_1}} $
+
+	$V_R_1=iR_1=\derivada{q(t)}{t}R_1$
+
+	$V_R_1=iR_1=\derivada{q(t)}{t}R_1$
     %Casos de uso de Inicio de Sesión
 
 \end{document}
