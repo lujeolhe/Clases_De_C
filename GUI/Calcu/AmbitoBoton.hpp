@@ -41,8 +41,11 @@ namespace WIN32API{
       hwndButton_resu=hwndButton_a;
     }
     AmbitoBoton(){
+      static int numerodeobjetos=0;
       strcpy(pantalla,"");
       strcpy(boton,"");
+      numerodeobjetos++;
+      printf("Valor de numerodeobjetos: %d\n",numerodeobjetos);
     }
   };
   int AmbitoBoton::bandera=0;

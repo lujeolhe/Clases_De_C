@@ -7,17 +7,22 @@ namespace WIN32API{
     char pantalla[50];
     char boton[10];
     static int bandera;
-    static float ans;
     static HWND hwndButton_panel;
     static ptrBoton ptrListaBotones[30];
     static int num_botones;
     static int num_aleatorio[11];
+    static HWND DESKTOP;
+    static int contrasena;
+    static char codigo_boton[10];
   public:
     char *get_pantalla(){
       return pantalla;
     }
     char *get_boton(){
       return boton;
+    }
+    char *get_codigo_boton(){
+      return codigo_boton;
     }
     int get_bandera(){
       return bandera;
@@ -28,26 +33,32 @@ namespace WIN32API{
     int get_num_botones(){
       return num_botones;
     }
+    int get_contrasena(){
+      return contrasena;
+    }
     ptrBoton *get_ptrLista(){
       return ptrListaBotones;
-    }
-    float get_ans(){
-      return ans;
     }
     HWND get_hwndButton_panel(){
       return hwndButton_panel;
     }
+    HWND get_hwnd_desktop(){
+      return DESKTOP;
+    }
     void set_pantalla(char a[50]){
       strcpy(pantalla,a);
     }
-    void set_(char a[50]){
+    void set_boton(char a[50]){
       strcpy(boton,a);
+    }
+    void set_codigo_boton(char a[10]){
+      strcpy(codigo_boton,a);
     }
     void set_bandera(int a){
       bandera=a;
     }
-    void set_ans(float a){
-      ans=a;
+    void set_contrasena(int a){
+      contrasena=a;
     }
     void set_num_botones(int num){
       num_botones=num;
@@ -63,21 +74,29 @@ namespace WIN32API{
     void set_hwndButton_panel(HWND hwndButton_a){
       hwndButton_panel=hwndButton_a;
     }
+    void set_hwnd_DESkTOP(HWND hwndButton_a){
+      DESKTOP=hwndButton_a;
+    }
     void generarNumerosAleatorios(){
       for(int i=0;i<10;i++){
         num_aleatorio[i]=rand()%10;
       }
     }
     AmbitoBoton(){
+      static int numerodeobjetos=0;
       strcpy(pantalla,"");
       strcpy(boton,"");
+      numerodeobjetos++;
+      printf("Valor de numerodeobjetos: %d\n",numerodeobjetos);
     }
   };
   int AmbitoBoton::bandera=0;
+  int AmbitoBoton::contrasena=12345;
   int AmbitoBoton::num_aleatorio[11];
+  char AmbitoBoton::codigo_boton[10];
   int AmbitoBoton::num_botones=0;
-  float AmbitoBoton::ans=0;
   HWND AmbitoBoton::hwndButton_panel=NULL;
+  HWND AmbitoBoton::DESKTOP=NULL;
   ptrBoton AmbitoBoton:: ptrListaBotones[30];
 };
 #endif

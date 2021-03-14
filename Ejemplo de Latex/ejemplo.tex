@@ -33,7 +33,7 @@
 \usepackage{multirow} % para las tablas
 %\usepackage[fleqn]{amsmath}
 \usepackage{nccmath}
-
+\usepackage{setspace}
 %Circuitos
 %\usepackage{tikz}
 %\usepackage{circuitickz}
@@ -48,6 +48,10 @@
 \definecolor{ColorRespuesta}{RGB}{12,79,182}
 \newcommand{\Respuesta}[1]{\textcolor{ColorRespuesta}{#1}}
 \newcommand{\derivada}[2]{\displaystyle{\frac{d#1}{d#2}}}
+\newcommand{\e}[1]{e^{#1}}
+\newcommand{\integral}[4]{\int_{#1}^{#2}{#3}{#4}}
+\newcommand{\escribir}[1]{\singlespacing#1\singlespacing}
+\newcommand{\fraccion}[2]{\displaystyle\frac{#1}{#2}}
 %================================================================
 %					Margenes
 %================================================================
@@ -61,9 +65,9 @@
 %================================================================
 %				  Datos del Autor
 %================================================================
-\title{Capitulo A}
-\author{Luis J Olguín}
-\date{\today}
+\title{Circuritos}
+\author{Luis Pablo}
+%\date{\today}
 %================================================================
 %					Documento
 %================================================================
@@ -73,15 +77,97 @@
 
 \maketitle
 
-	Analisis del Circuito RC:
+	\escribir{Analisis del Circuito RC:}
+	$V(t)=\fraccion{A\sin(wt)}{R_1}$\\
 
-	$V(t)=A\sin(\omega t)$
+	$V_{C_1}=\displaystyle{\frac{q(t)}{C_1}} $\\
 
-	$V_C_1=\displaystyle{\frac{q(t)}{C_1}} $
+	$V_{R_1}=IR_1=\derivada{q(t)}{t}R_1$\\
 
-	$V_R_1=iR_1=\derivada{q(t)}{t}R_1$
+	$V_{R_1}=IR_1=\derivada{q(t)}{t}R_1$\\
 
-	$V_R_1=iR_1=\derivada{q(t)}{t}R_1$
+	\escribir{Comienza la solucion de la ecuacion diferecial para encontrar q(t)}
+	$\derivada{q(t)}{t}+\fraccion{q(t)}{R_1C_1}=\fraccion{Asin(wt)}{R_1}$\\
+
+	\escribir{Esto es para encontrar la ecuacion homogenea=0}
+	$\derivada{q(t)}{t}+\fraccion{q(t)}{R_1C_1}=0$\\
+
+	$\derivada{q(t)}{t}=-\fraccion{q(t)}{R_1C_1}$\\
+
+	$\displaystyle{\int\fraccion{1}{q(t)}dq(t)}=\displaystyle{\integral{0}{t}{\displaystyle{\frac{1}{R_1C_1}}}{dt}}$\\
+
+	$\ln (q(t)c)=-\displaystyle{\frac{t}{R_1C_1}}$\\
+
+	\escribir{Esto se eleva a euler e}
+	$q_{h}(t)=\fraccion{\e{\frac{-t}{R_1C_1}}}{c}$\\
+
+	\escribir{Esto es para encontrar la ecuacion particular}
+	$q_{p}(t)=m\sin(wt)+k\cos(wt)$\\
+
+	$q_{p}(t)'=wm\cos(wt)-wk\sen(wt)$\\
+
+	\escribir{Sustituimos en la ecuacion principal}
+	$wm\cos(wt)-wk\sen(wt)+\fraccion{m\sin(wt)+k\cos(wt)}{R_1C_1}=\fraccion{A\sin(wt)}{R_1}$\\
+
+	$wm\cos(wt)+\fraccion{k\cos(wt)}{R_1C_1}=0$\\
+
+	$-wk\sen(wt)+\fraccion{m\sin(wt)}{R_1C_1}=\fraccion{A\sin(wt)}{R_1}$\\
+	
+	\escribir{Ahora se despejamos k con respecto de m}
+	$wm\cos(wt)+\fraccion{k\cos(wt)}{R_1C_1}=0$\\
+
+	$\fraccion{k}{R_1C_1}=-wm$\\
+
+	$k=-wmR_1C_1$\\ 
+
+	\escribir{Ahora se despejamos k y usamos el valor de m que acabamos de descubrir}
+	$-wk\sen(wt)+\fraccion{m\sin(wt)}{R_1C_1}=\fraccion{A\sin(wt)}{R_1}$\\
+
+	$\fraccion{m}{R_1C_1}-kw=\fraccion{A}{R_1}$\\
+	\escribir{Sustituimos la k por lo que encontramos con anterioridad}
+	$\fraccion{m}{R_1C_1}+mw^2R_1C_1=\fraccion{A}{R_1}$\\
+
+	$m(\fraccion{1}{R_1C_1}+w^2R_1C_1)=\fraccion{A}{R_1}$\\
+
+	$m=\fraccion{A}{(\fraccion{1+w^2R_1^2C_1^2}{R_1C_1})R_1}$\\
+
+	$m=\fraccion{AC_1}{1+w^2R_1^2C_1^2}$\\
+	
+	\escribir{Ahora sustituimos m en la formula de k}
+	$k=-\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}$\\
+
+	\escribir{Escribimos ahora la formula particular de q(t)}
+	$q_p(t)=\fraccion{AC_1}{1+w^2R_1^2C_1^2}\sin(wt)-\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}\cos(wt)$\\
+
+	\escribir{Escribimos ahora la formula Equivalente de q(t)}
+	$q_t(t)=a\e{\frac{-t}{R_1C_1}}+\fraccion{AC_1}{1+w^2R_1^2C_1^2}\sin(wt)-\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}\cos(wt)$\\
+	
+	\escribir{Ahora encontraremos el valor de a}
+	\escribir{Si t=0, entocnes q(0)=0}
+	$0=a-\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}$\\
+	
+	$a=\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}$\\
+
+	\escribir{Por lo que la solución nos queda}
+	$q(t)=\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}\e{\frac{-t}{R_1C_1}}+\fraccion{AC_1}{1+w^2R_1^2C_1^2}\sin(wt)-\fraccion{AwC_1^2R_1}{1+w^2R_1^2C_1^2}\cos(wt)$\\
+
+	\escribir{Factorizamos:}
+	$q(t)=\fraccion{AC_1}{1+w^2R_1^2C_1^2}(wR_1C_1\e{\frac{-t}{R_1C_1}}+\sin(wt)-wR_1C_1\cos(wt))$\\
+
+	\escribir{Derivado:}
+	$q(t)'=\fraccion{AC_1}{1+w^2R_1^2C_1^2}(-w\e{\frac{-t}{R_1C_1}}+x\cos(wt)+w^2R_1C_1\sin(wt))$\\
+		
+	\escribir{Sustituimos los valores de $q(t)$ y $q(t)'$  en la formalas de $V_{C_1}$ y $V_{R_1}$ }
+
+	$V_{C_1}=\displaystyle{\frac{q(t)}{C_1}} $\\
+
+	$V_{R_1}=IR_1=\derivada{q(t)}{t}R_1$\\
+
+	\escribir{Quedan así:}
+	$V_{C_1}=\fraccion{AC_1^2}{1+w^2R_1^2C_1^2}(wR_1C_1\e{\frac{-t}{R_1C_1}}+\sin(wt)-wR_1C_1\cos(wt))$\\
+
+	$V_{R_1}=\fraccion{AC_1R_1}{1+w^2R_1^2C_1^2}(-w\e{\frac{-t}{R_1C_1}}+x\cos(wt)+w^2R_1C_1\sin(wt))$\\
+
     %Casos de uso de Inicio de Sesión
 
 \end{document}

@@ -8,32 +8,17 @@ namespace WIN32API{
     public:
     BotonPanel(Rectangulo R, char *texto, Punto posicion, HWND hwndButton):Boton(R,texto,posicion,hwndButton){}
     void pushAction(){
+      int bandera_int=0;
       srand(time(NULL));
       char num_aux[11];
       generarNumerosAleatorios();
       int *aux=get_num_aleatorio();
-      /////////////////////////DEBUG
-      printf("Valor aux en panel Antes:");
-      for(int i=0;i<10;i++){
-        printf(" %d,",aux[i]);
-      }
-      printf("\n" );
-      /////////////////////////ENDDEBUG
       aleatorio(aux);
-      /////////////////////////DEBUG
-      printf("Valor aux en panel Despu:");
-      for(int i=0;i<10;i++){
-        printf(" %d,",aux[i]);
-      }
-      printf("\n" );
-      /////////////////////////ENDDEBUG
-
       for(int i=0;i<=get_num_botones();i++){
-        printf("Valor aux en panel depues de aleatorio dentro del otro for: %d\n",aux[i]);
         printf("Numero botones: %d\n",get_num_botones() );
         ptrBoton *resultado=get_ptrLista();
         sprintf(num_aux,"%d",aux[i]);
-        //printf("Valor: %s\n",((resultado[i])->get_texto()));
+        printf("Valor: %s\n",((resultado[i])->get_texto()));
         resultado[i]->set_texto(num_aux);
       }
     }
@@ -55,7 +40,6 @@ namespace WIN32API{
       }
       int l=0;
       int h=0;
-      int h_2[11];
       for(int j=0;j<10;j++){
         int cont=0;
         for(int i=0;i<10;i++){
@@ -77,10 +61,8 @@ namespace WIN32API{
       remplazar(h,l,aux,num_mas,num_no);
     }
     void remplazar(int mas, int no, int aux[], int num_mas[],int num_no[]){
-      int cont_2=0;
       int cont_3=0;
-      for(int f=0,v=0;f<mas,v<no;f++){
-          cont_2=0;
+      for(int f=0,v=0;v<no;f++){
           cont_3=0;
         for(int i=0;i<10;i++){
           if(aux[i]==num_mas[f]){
