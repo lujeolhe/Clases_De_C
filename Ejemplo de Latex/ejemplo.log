@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2021.3.7)  21 MAR 2021 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2021.3.7)  28 MAR 2021 02:00
 entering extended mode
 **./ejemplo.tex
 (ejemplo.tex
@@ -710,7 +710,7 @@ LaTeX Info: Redefining \% on input line 9.
 Here is how much of TeX's memory you used:
  5910 strings out of 480790
  81274 string characters out of 2907056
- 341680 words of memory out of 3000000
+ 341685 words of memory out of 3000000
  21778 multiletter control sequences out of 15000+200000
  568263 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -727,7 +727,7 @@ ublic/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:
 onts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lm
 sy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program F
 iles/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
-Output written on ejemplo.pdf (4 pages, 127735 bytes).
+Output written on ejemplo.pdf (4 pages, 127956 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

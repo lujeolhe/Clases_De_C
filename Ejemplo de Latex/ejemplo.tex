@@ -49,9 +49,9 @@
 \newcommand{\Respuesta}[1]{\textcolor{ColorRespuesta}{#1}}
 \newcommand{\derivada}[2]{\displaystyle{\frac{d#1}{d#2}}}
 \newcommand{\e}[1]{e^{#1}}
-\newcommand{\integral}[4]{\int_{#1}^{#2}{#3}{#4}}
+\newcommand{\integral}[4]{\displaystyle{\int_{#1}^{#2}{#3}{#4}}}
 \newcommand{\escribir}[1]{\singlespacing#1\singlespacing}
-\newcommand{\fraccion}[2]{\displaystyle\frac{#1}{#2}}
+\newcommand{\fraccion}[2]{\displaystyle{\frac{#1}{#2}}}
 %================================================================
 %					Margenes
 %================================================================
@@ -80,7 +80,7 @@
 	\escribir{Analisis del Circuito RC:}
 	$V(t)=\fraccion{A\sin(wt)}{R_1}$\\
 
-	$V_{C_1}=\displaystyle{\frac{q(t)}{C_1}} $\\
+	$V_{C_1}=\fraccion{q(t)}{C_1} $\\
 
 	$V_{R_1}=IR_1=\derivada{q(t)}{t}R_1$\\
 
@@ -94,9 +94,9 @@
 
 	$\derivada{q(t)}{t}=-\fraccion{q(t)}{R_1C_1}$\\
 
-	$\displaystyle{\int\fraccion{1}{q(t)}dq(t)}=\displaystyle{\integral{0}{t}{\displaystyle{\frac{1}{R_1C_1}}}{dt}}$\\
+	$\displaystyle\int{\fraccion{1}{q(t)}}{dq(t)}=\integral{0}{t}{\fraccion{1}{R_1C_1}}{dt}$\\
 
-	$\ln (q(t)c)=-\displaystyle{\frac{t}{R_1C_1}}$\\
+	$\ln (q(t)c)=-\fraccion{t}{R_1C_1}$\\
 
 	\escribir{Esto se eleva a euler e}
 	$q_{h}(t)=\fraccion{\e{\frac{-t}{R_1C_1}}}{c}$\\
@@ -163,7 +163,7 @@
 		
 	\escribir{Sustituimos los valores de $q(t)$ y $q(t)'$  en la formalas de $V_{C_1}$ y $V_{R_1}$ }
 
-	$V_{C_1}=\displaystyle{\frac{q(t)}{C_1}} $\\
+	$V_{C_1}=\fraccion{q(t)}{C_1} $\\
 
 	$V_{R_1}=IR_1=\derivada{q(t)}{t}R_1$\\
 
