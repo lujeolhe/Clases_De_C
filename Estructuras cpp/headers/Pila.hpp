@@ -1,6 +1,6 @@
 #ifndef _PILA_HPP
 #define _PILA_HPP
-
+#include <iostream>
 namespace ESTRUCTURAS{ //Nombres de espacio siempre con Mayusculas
   class Pila{ //Clases Simepre con la primera letra en Mayuscula
     private:
@@ -22,6 +22,8 @@ namespace ESTRUCTURAS{ //Nombres de espacio siempre con Mayusculas
       int pop();
       //Obtener el tamaño de mi pila
       int getTamanio();
+      const int *getpPila();
+      int getIndex();
       ~Pila();
   };
 }
