@@ -20,6 +20,3 @@ int main(){
     cout << "\n" << s <<endl;
   }
 }
-///Operador ++,--,<<,+
-//contruc personalizado primer dia, defecto
-//atributos de tipo Natural

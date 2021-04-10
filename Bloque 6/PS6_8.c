@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <dos.h>
 /////////////////////////
 //Definiciones
 /////////////////////////
@@ -21,12 +22,13 @@ void mover_abajo(int numeros[][tam_max],int n,int j,int m);
 void mover_arriba(int numeros[][tam_max],int n,int j,int m);
 void mover_dere(int numeros[][tam_max],int m,int n);
 void imprimir(int numeros[][tam_max],int n,int m);
+void delay(int number_of_seconds);
 /////////////////////////
 //Funcion Principal
 /////////////////////////
 int main(){
   int numeros[tam_max][tam_max];
-  int n=10,m=10;
+  int n=5,m=5;
   inicializar_matriz(numeros,n,m);
   mover_dere(numeros,m,n);
 }
@@ -78,4 +80,18 @@ void imprimir(int numeros[][tam_max],int n,int m){
     printf("\n" );
   }
     printf("\n\n" );
+    delay(500);
+    system("cls");
+}
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds =  number_of_seconds;
+
+    // Storing start time
+    clock_t start_time = clock();
+
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds)
+        ;
 }

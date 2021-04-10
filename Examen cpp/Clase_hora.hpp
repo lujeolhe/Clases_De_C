@@ -93,15 +93,31 @@ namespace NUMEROS{
     }
     return c;
   }
+  string conversion_0(Naturales a){
+    static char minuto_0[5];
+    sprintf(minuto_0,"0%d",a.n);
+    string m=minuto_0;
+    return m;
+  }
+  string conversion(Naturales a){
+    static char minutos[5];
+    sprintf(minutos,"%d",a.n);
+    string m=minutos;
+    return m;
+  }
   ostream& operator<<(ostream& os,Hora a){
     if(a.hora>12){
       a.turno="pm";
-      cout<<a.hora<<":"<<a.minuto<<":"<<a.segundo<<" ";
+      cout<<(a.hora>9?conversion(a.hora):conversion_0(a.hora))<<":"
+      <<(a.minuto>9?conversion(a.minuto):conversion_0(a.minuto))<<":"
+      <<(a.segundo>9?conversion(a.segundo):conversion_0(a.segundo))<<" ";
       return os<<a.turno;
     }
     else{
       a.turno="am";
-      cout<<a.hora<<":"<<a.minuto<<":"<<a.segundo<<" ";
+      cout<<(a.hora>9?conversion(a.hora):conversion_0(a.hora))<<":"
+      <<(a.minuto>9?conversion(a.minuto):conversion_0(a.minuto))<<":"
+      <<(a.segundo>9?conversion(a.segundo):conversion_0(a.segundo))<<" ";
       return os<<a.turno;
     }
   }
