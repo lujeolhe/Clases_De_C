@@ -23,6 +23,7 @@ void mover_abajo(int numeros[][tam_max],int n,int j,int m);
 void mover_arriba(int numeros[][tam_max],int m, int j,int i,int n);
 void movimiento(int numeros[][tam_max],int m,int n);
 void imprimir(int numeros[][tam_max],int n,int m);
+void delay(int number_of_seconds);
 /////////////////////////
 //Funcion Principal
 /////////////////////////
@@ -47,7 +48,6 @@ void mover_derecha(int numeros[][tam_max],int n,int i,int m){
   numeros[i][0]=1;
   imprimir(numeros,n,m);
   for(int j=1;j<m;j++){
-    printf("Valor de j=%d\n",j );
     numeros[i][j]=numeros[i][j-1];
     numeros[i][j-1]=aux;
     imprimir(numeros,n,m);
@@ -96,7 +96,6 @@ void mover_abajo(int numeros[][tam_max],int n,int j,int m){
     numeros[i][j]=aux;
     imprimir(numeros,n,m);
   }
-  printf("Fin de abajo\n" );
   numeros[n-1][j]=0;
 }
 void imprimir(int numeros[][tam_max],int n,int m){
@@ -107,4 +106,14 @@ void imprimir(int numeros[][tam_max],int n,int m){
     printf("\n" );
   }
     printf("\n\n" );
+    delay(500);
+    system("cls");
+}
+void delay(int number_of_seconds){
+    // Converting time into milli_seconds
+    int milli_seconds =  number_of_seconds;
+    // Storing start time
+    clock_t start_time = clock();
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds);
 }
